@@ -11,28 +11,34 @@ psychedelicIdeasStyle.textContent = `
     position:relative;
   }
   .hero-title .ideas-rainbow > span:nth-child(1){
+    color:#FFE600!important;
     text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FF3FB4!important;
   }
   .hero-title .ideas-rainbow > span:nth-child(2){
+    color:#FF1F1F!important;
     text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FFE600!important;
   }
   .hero-title .ideas-rainbow > span:nth-child(3){
+    color:#FF3FB4!important;
     text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #145BFF!important;
   }
   .hero-title .ideas-rainbow > span:nth-child(4){
+    color:#145BFF!important;
     text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FF6500!important;
   }
   .hero-title .ideas-rainbow > span:nth-child(5){
+    color:#FF6500!important;
     text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FFE600!important;
   }
   html[lang="fr"] .hero-title{
-    font-size:clamp(66px,11.4vw,172px);
-    line-height:.82;
-    letter-spacing:-.065em;
+    font-size:clamp(58px,9.3vw,146px);
+    line-height:.84;
+    letter-spacing:-.06em;
   }
   html[lang="fr"] .hero-title-wrap{padding:3vh 0 2vh}
+  html[lang="fr"] .hero-title > span:nth-child(4){display:none}
   @media(max-width:820px){
-    html[lang="fr"] .hero-title{font-size:clamp(50px,16.6vw,92px);line-height:.84}
+    html[lang="fr"] .hero-title{font-size:clamp(44px,13.2vw,74px);line-height:.88}
   }
 `;
 document.head.appendChild(psychedelicIdeasStyle);
@@ -92,7 +98,7 @@ const copy = {
     menuOpen: 'MENU',
     menuClose: 'FERMER',
     startProject: 'DÉMARRER UN PROJET ↗',
-    hero: ['PERDU DANS', 'LES IDÉES', 'RETROUVÉ DANS', 'LA CRÉATION.'],
+    hero: ['PERDU DANS', 'IDÉES', 'RETROUVÉ DANS LA CRÉATION.'],
     heroLead: 'NOUS NE CHERCHONS PAS SEULEMENT UNE DIRECTION —<br>NOUS LA CRÉONS.',
     heroCopy: 'De la première idée à la dernière image, MAZED construit des univers visuels à travers le film, la photographie, le design et les récits culturels.',
     checkWork: '[ VOIR NOS PROJETS ]',
@@ -162,11 +168,14 @@ function applyLanguage(lang){
     if (lang === 'en') {
       ideaLine.innerHTML = '<span>I</span><span>D</span><span>E</span><span>A</span><span>S</span>';
     } else {
-      ideaLine.textContent = t.hero[1];
+      ideaLine.innerHTML = 'LES <span>I</span><span>D</span><span>É</span><span>E</span><span>S</span>';
     }
   }
-  if (heroLines[2]) heroLines[2].textContent = t.hero[2];
-  if (heroLines[3]) heroLines[3].textContent = t.hero[3];
+  if (heroLines[2]) heroLines[2].textContent = lang === 'fr' ? t.hero[2] : t.hero[2];
+  if (heroLines[3]) {
+    heroLines[3].textContent = lang === 'en' ? t.hero[3] : '';
+    heroLines[3].style.display = lang === 'en' ? '' : 'none';
+  }
   setHTML('.hero-bottom > p:first-child', t.heroLead);
   setText('.hero-copy', t.heroCopy);
   setText('.hero-bottom .bracket-link', t.checkWork);

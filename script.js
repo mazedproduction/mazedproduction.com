@@ -2,22 +2,181 @@ const topbar = document.querySelector('.topbar');
 const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu-panel');
 const menuLinks = document.querySelectorAll('.menu-panel a');
+const langToggle = document.querySelector('[data-lang-toggle]');
 
-// Refined editorial palette: muted ochre, slate blue, sage, dusty mauve, terracotta.
-const editorialPalette = document.createElement('style');
-editorialPalette.textContent = `
-  .hero-title .ideas-rainbow span:nth-child(1){color:#C8A96B !important}
-  .hero-title .ideas-rainbow span:nth-child(2){color:#6F7FA8 !important}
-  .hero-title .ideas-rainbow span:nth-child(3){color:#7E9478 !important}
-  .hero-title .ideas-rainbow span:nth-child(4){color:#9A7F91 !important}
-  .hero-title .ideas-rainbow span:nth-child(5){color:#C77A5A !important}
-  .menu-inner a:nth-child(1):hover{color:#C8A96B !important}
-  .menu-inner a:nth-child(2):hover{color:#6F7FA8 !important}
-  .menu-inner a:nth-child(3):hover{color:#7E9478 !important}
-  .menu-inner a:nth-child(4):hover{color:#9A7F91 !important}
-  .menu-inner a:nth-child(5):hover{color:#C77A5A !important}
-`;
-document.head.appendChild(editorialPalette);
+let currentLang = 'en';
+
+const copy = {
+  en: {
+    title: 'MAZED — Creative Production Studio',
+    description: 'MAZED Production — creative studio in Paris. Art direction, film, photography, branding, digital and culture.',
+    menu: ['WORK', 'STUDIO', 'ABILITIES', 'ABOUT', 'CONTACT'],
+    menuFooter: 'PARIS / AVAILABLE WORLDWIDE',
+    menuOpen: 'MENU',
+    menuClose: 'CLOSE',
+    startProject: 'START A PROJECT ↗',
+    hero: ['LOST IN', 'IDEAS', 'FOUND IN', 'CREATION.'],
+    heroLead: "WE DON'T JUST FIND DIRECTION —<br>WE CREATE IT.",
+    heroCopy: 'From the first thought to the final frame, MAZED builds visual worlds through film, photography, design and cultural storytelling.',
+    checkWork: '[ CHECK OUT OUR WORK ]',
+    featured: 'FEATURED WORK',
+    projects: [
+      ['PROJECT 001 / EDITORIAL', 'DAZED<br>LOVER BOY', ['ART DIRECTION','PHOTOGRAPHY','EDITORIAL','CREATIVE DIRECTION']],
+      ['PROJECT 002 / FILM', 'AFTER<br>MIDNIGHT', ['FILM','PRODUCTION','EDITING','COLOR']],
+      ['PROJECT 003 / IDENTITY', 'OBJECTS<br>OF DESIRE', ['BRANDING','CAMPAIGN','SOCIAL','VISUAL IDENTITY']]
+    ],
+    viewProject: '[ VIEW PROJECT ]',
+    marquee: ['GRAPHIC DESIGN','BRANDING','ADVERTISING','VISUAL IDENTITY','SOCIAL MEDIA','WEB DESIGN','FILM','PHOTOGRAPHY','CREATIVE DIRECTION'],
+    studioKicker: 'CRAFTING CULTURE<br>[ TELLING STORIES ]<br>SHAPING TOMORROW',
+    studioTitle: 'MAZED IS A<br>CREATIVE<br>PRODUCTION<br>STUDIO.',
+    studioCopy: 'We work with artists, brands and people who want more than content. We turn ideas into a visual language — one that can live as a film, an image, an identity, a campaign or an entire world.',
+    abilitiesLabel: 'OUR ABILITIES',
+    abilities: [
+      ['CREATIVE DIRECTION','Concept / Campaign / Story'],
+      ['FILM & VIDEO','Production / Edit / Color'],
+      ['PHOTOGRAPHY','Editorial / Portrait / Brand'],
+      ['BRANDING','Identity / Type / Art Direction'],
+      ['SOCIAL & CAMPAIGNS','Concept / Content / Rollout'],
+      ['DIGITAL DESIGN','Web / Experience / Launch']
+    ],
+    galleryThe: 'THE',
+    galleryTitle: 'GALLERY',
+    galleryCopy: 'OUR PERSONAL VISUAL MOODBOARD —<br>CURATED FOR ENDLESS INSPIRATION.',
+    galleryNote: 'PLACEHOLDERS — REPLACE WITH YOUR OWN WORK / IMAGES BEFORE LAUNCH',
+    calloutLead: 'WE REVEAL WHAT MAKES YOU',
+    calloutTitle: 'IMPOSSIBLE<br>TO IGNORE.',
+    contactTop: ['NEW BUSINESS / COLLABORATION','PARIS · WORLDWIDE'],
+    contactTitle: "LET'S MAKE<br>SOMETHING<br>WORTH FINDING.",
+    contactServices: 'FILM · PHOTO · ART DIRECTION · BRANDING · DIGITAL · CULTURE',
+    footerMid: 'LOST IN IDEAS<br>[ FOUND IN CREATION ]',
+    backTop: 'BACK TO TOP ↑'
+  },
+  fr: {
+    title: 'MAZED — Studio de production créative',
+    description: 'MAZED Production — studio créatif à Paris. Direction artistique, film, photographie, branding, digital et culture.',
+    menu: ['PROJETS', 'STUDIO', 'SAVOIR-FAIRE', 'À PROPOS', 'CONTACT'],
+    menuFooter: 'PARIS / DISPONIBLE PARTOUT',
+    menuOpen: 'MENU',
+    menuClose: 'FERMER',
+    startProject: 'DÉMARRER UN PROJET ↗',
+    hero: ['PERDU DANS', 'IDÉES', 'RETROUVÉ DANS', 'CRÉATION.'],
+    heroLead: 'NOUS NE CHERCHONS PAS SEULEMENT UNE DIRECTION —<br>NOUS LA CRÉONS.',
+    heroCopy: 'De la première idée à la dernière image, MAZED construit des univers visuels à travers le film, la photographie, le design et les récits culturels.',
+    checkWork: '[ VOIR NOS PROJETS ]',
+    featured: 'PROJETS À LA UNE',
+    projects: [
+      ['PROJET 001 / ÉDITORIAL', 'DAZED<br>LOVER BOY', ['DIRECTION ARTISTIQUE','PHOTOGRAPHIE','ÉDITORIAL','DIRECTION CRÉATIVE']],
+      ['PROJET 002 / FILM', 'AFTER<br>MIDNIGHT', ['FILM','PRODUCTION','MONTAGE','ÉTALONNAGE']],
+      ['PROJET 003 / IDENTITÉ', 'OBJECTS<br>OF DESIRE', ['BRANDING','CAMPAGNE','SOCIAL','IDENTITÉ VISUELLE']]
+    ],
+    viewProject: '[ VOIR LE PROJET ]',
+    marquee: ['DESIGN GRAPHIQUE','BRANDING','PUBLICITÉ','IDENTITÉ VISUELLE','RÉSEAUX SOCIAUX','WEB DESIGN','FILM','PHOTOGRAPHIE','DIRECTION CRÉATIVE'],
+    studioKicker: 'CRÉER LA CULTURE<br>[ RACONTER DES HISTOIRES ]<br>FAÇONNER DEMAIN',
+    studioTitle: 'MAZED EST UN<br>STUDIO DE<br>PRODUCTION<br>CRÉATIVE.',
+    studioCopy: 'Nous travaillons avec des artistes, des marques et des personnes qui veulent plus que du contenu. Nous transformons les idées en langage visuel — capable de devenir un film, une image, une identité, une campagne ou un univers entier.',
+    abilitiesLabel: 'NOS SAVOIR-FAIRE',
+    abilities: [
+      ['DIRECTION CRÉATIVE','Concept / Campagne / Récit'],
+      ['FILM & VIDÉO','Production / Montage / Étalonnage'],
+      ['PHOTOGRAPHIE','Éditorial / Portrait / Marque'],
+      ['BRANDING','Identité / Typographie / Direction artistique'],
+      ['SOCIAL & CAMPAGNES','Concept / Contenu / Déploiement'],
+      ['DESIGN DIGITAL','Web / Expérience / Lancement']
+    ],
+    galleryThe: 'LA',
+    galleryTitle: 'GALERIE',
+    galleryCopy: 'NOTRE MOODBOARD VISUEL PERSONNEL —<br>CURATÉ POUR UNE INSPIRATION SANS FIN.',
+    galleryNote: 'VISUELS TEMPORAIRES — À REMPLACER PAR VOS PROPRES IMAGES / PROJETS AVANT LE LANCEMENT',
+    calloutLead: 'NOUS RÉVÉLONS CE QUI VOUS REND',
+    calloutTitle: 'IMPOSSIBLE<br>À IGNORER.',
+    contactTop: ['NOUVEAUX PROJETS / COLLABORATIONS','PARIS · MONDE ENTIER'],
+    contactTitle: 'CRÉONS<br>QUELQUE CHOSE<br>QUI MÉRITE D’ÊTRE TROUVÉ.',
+    contactServices: 'FILM · PHOTO · DIRECTION ARTISTIQUE · BRANDING · DIGITAL · CULTURE',
+    footerMid: 'PERDU DANS LES IDÉES<br>[ RETROUVÉ DANS LA CRÉATION ]',
+    backTop: 'RETOUR EN HAUT ↑'
+  }
+};
+
+function setHTML(selector, value){
+  const el = document.querySelector(selector);
+  if (el) el.innerHTML = value;
+}
+
+function setText(selector, value){
+  const el = document.querySelector(selector);
+  if (el) el.textContent = value;
+}
+
+function applyLanguage(lang){
+  currentLang = lang;
+  const t = copy[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) metaDescription.setAttribute('content', t.description);
+
+  menuLinks.forEach((link, i) => {
+    if (t.menu[i]) link.textContent = t.menu[i];
+  });
+  setText('.menu-inner p', t.menuFooter);
+  menuBtn.textContent = menu.classList.contains('open') ? t.menuClose : t.menuOpen;
+  setText('[data-i18n="startProject"]', t.startProject);
+
+  const heroLines = document.querySelectorAll('.hero-title > span');
+  if (heroLines[0]) heroLines[0].textContent = t.hero[0];
+  const ideaLetters = document.querySelectorAll('.ideas-rainbow > span');
+  [...t.hero[1]].forEach((letter, i) => { if (ideaLetters[i]) ideaLetters[i].textContent = letter; });
+  if (heroLines[2]) heroLines[2].textContent = t.hero[2];
+  if (heroLines[3]) heroLines[3].textContent = t.hero[3];
+  setHTML('.hero-bottom > p:first-child', t.heroLead);
+  setText('.hero-copy', t.heroCopy);
+  setText('.hero-bottom .bracket-link', t.checkWork);
+  setText('.featured .section-label span:first-child', t.featured);
+
+  document.querySelectorAll('.slide').forEach((slide, i) => {
+    const project = t.projects[i];
+    if (!project) return;
+    const kicker = slide.querySelector('.slide-info > p');
+    const title = slide.querySelector('.slide-info h2');
+    const tags = slide.querySelectorAll('.tags span');
+    const view = slide.querySelector('.bracket-link');
+    if (kicker) kicker.textContent = project[0];
+    if (title) title.innerHTML = project[1];
+    tags.forEach((tag, j) => { if (project[2][j]) tag.textContent = project[2][j]; });
+    if (view) view.textContent = t.viewProject;
+  });
+
+  const marqueeSpans = document.querySelectorAll('.marquee-track span');
+  marqueeSpans.forEach((span, i) => span.textContent = t.marquee[i % t.marquee.length]);
+  setHTML('.studio-kicker', t.studioKicker);
+  setHTML('.studio h2', t.studioTitle);
+  setText('.studio p', t.studioCopy);
+  setText('.abilities .section-label span:first-child', t.abilitiesLabel);
+  document.querySelectorAll('.ability-grid a').forEach((row, i) => {
+    const item = t.abilities[i];
+    if (!item) return;
+    const strong = row.querySelector('strong');
+    const em = row.querySelector('em');
+    if (strong) strong.textContent = item[0];
+    if (em) em.textContent = item[1];
+  });
+  setText('.gallery-head .mono', t.galleryThe);
+  setText('.gallery-head h2', t.galleryTitle);
+  setHTML('.gallery-head > p', t.galleryCopy);
+  setText('.gallery-note', t.galleryNote);
+  setText('.callout > p', t.calloutLead);
+  setHTML('.callout h2', t.calloutTitle);
+
+  const contactTop = document.querySelectorAll('.contact-top span');
+  if (contactTop[0]) contactTop[0].textContent = t.contactTop[0];
+  if (contactTop[1]) contactTop[1].textContent = t.contactTop[1];
+  setHTML('.contact h2', t.contactTitle);
+  setText('.contact-bottom p', t.contactServices);
+  setHTML('.footer-mid', t.footerMid);
+  setText('.footer-end a', t.backTop);
+
+  if (langToggle) langToggle.setAttribute('aria-label', lang === 'en' ? 'Passer le site en français' : 'Switch site to English');
+}
 
 window.addEventListener('scroll', () => {
   topbar.classList.toggle('scrolled', window.scrollY > 20);
@@ -27,11 +186,13 @@ function setMenu(open){
   menu.classList.toggle('open', open);
   menu.setAttribute('aria-hidden', String(!open));
   menuBtn.setAttribute('aria-expanded', String(open));
-  menuBtn.textContent = open ? 'CLOSE' : 'MENU';
+  menuBtn.textContent = open ? copy[currentLang].menuClose : copy[currentLang].menuOpen;
   document.body.style.overflow = open ? 'hidden' : '';
 }
+
 menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
 menuLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
+if (langToggle) langToggle.addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'fr' : 'en'));
 
 const slides = [...document.querySelectorAll('[data-slide]')];
 const current = document.querySelector('[data-current]');
@@ -53,3 +214,5 @@ slider.addEventListener('touchend', e => {
   if(Math.abs(delta) > 55) showSlide(index + (delta < 0 ? 1 : -1));
   touchX = null;
 }, {passive:true});
+
+applyLanguage('en');

@@ -25,6 +25,15 @@ psychedelicIdeasStyle.textContent = `
   .hero-title .ideas-rainbow > span:nth-child(5){
     text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FFE600!important;
   }
+  html[lang="fr"] .hero-title{
+    font-size:clamp(66px,11.4vw,172px);
+    line-height:.82;
+    letter-spacing:-.065em;
+  }
+  html[lang="fr"] .hero-title-wrap{padding:3vh 0 2vh}
+  @media(max-width:820px){
+    html[lang="fr"] .hero-title{font-size:clamp(50px,16.6vw,92px);line-height:.84}
+  }
 `;
 document.head.appendChild(psychedelicIdeasStyle);
 
@@ -83,7 +92,7 @@ const copy = {
     menuOpen: 'MENU',
     menuClose: 'FERMER',
     startProject: 'DÉMARRER UN PROJET ↗',
-    hero: ['PERDU DANS', 'IDÉES', 'RETROUVÉ DANS', 'CRÉATION.'],
+    hero: ['PERDU DANS', 'LES IDÉES', 'RETROUVÉ DANS', 'LA CRÉATION.'],
     heroLead: 'NOUS NE CHERCHONS PAS SEULEMENT UNE DIRECTION —<br>NOUS LA CRÉONS.',
     heroCopy: 'De la première idée à la dernière image, MAZED construit des univers visuels à travers le film, la photographie, le design et les récits culturels.',
     checkWork: '[ VOIR NOS PROJETS ]',
@@ -101,7 +110,7 @@ const copy = {
     abilitiesLabel: 'NOS SAVOIR-FAIRE',
     abilities: [
       ['DIRECTION CRÉATIVE','Concept / Campagne / Récit'],
-      ['FILM & VIDÉO','Production / Montage / Étalonnage'],
+      ['FILM & VIDÉO','Production / Montage / ÉtalONNAGE'],
       ['PHOTOGRAPHIE','Éditorial / Portrait / Marque'],
       ['BRANDING','Identité / Typographie / Direction artistique'],
       ['SOCIAL & CAMPAGNES','Concept / Contenu / Déploiement'],
@@ -148,8 +157,14 @@ function applyLanguage(lang){
 
   const heroLines = document.querySelectorAll('.hero-title > span');
   if (heroLines[0]) heroLines[0].textContent = t.hero[0];
-  const ideaLetters = document.querySelectorAll('.ideas-rainbow > span');
-  [...t.hero[1]].forEach((letter, i) => { if (ideaLetters[i]) ideaLetters[i].textContent = letter; });
+  const ideaLine = heroLines[1];
+  if (ideaLine) {
+    if (lang === 'en') {
+      ideaLine.innerHTML = '<span>I</span><span>D</span><span>E</span><span>A</span><span>S</span>';
+    } else {
+      ideaLine.textContent = t.hero[1];
+    }
+  }
   if (heroLines[2]) heroLines[2].textContent = t.hero[2];
   if (heroLines[3]) heroLines[3].textContent = t.hero[3];
   setHTML('.hero-bottom > p:first-child', t.heroLead);

@@ -10,7 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .hero-title .outline{color:var(--acid);-webkit-text-stroke:0;text-stroke:0}
+    .hero-title .outline{color:inherit;-webkit-text-stroke:0;text-stroke:0}
+    .hero-title .ideas-rainbow span{display:inline}
+    .hero-title .ideas-rainbow span:nth-child(1){color:var(--acid)}
+    .hero-title .ideas-rainbow span:nth-child(2){color:#3f7cff}
+    .hero-title .ideas-rainbow span:nth-child(3){color:#38d66b}
+    .hero-title .ideas-rainbow span:nth-child(4){color:#9b5cff}
+    .hero-title .ideas-rainbow span:nth-child(5){color:#ff8a2b}
     .menu-inner a:nth-child(1):hover{color:var(--acid)}
     .menu-inner a:nth-child(2):hover{color:#3f7cff}
     .menu-inner a:nth-child(3):hover{color:#38d66b}
@@ -48,7 +54,7 @@
       <div class="hero-title-wrap">
         <h1 class="hero-title">
           <span>LOST IN</span>
-          <span class="outline">IDEAS</span>
+          <span class="outline ideas-rainbow"><span>I</span><span>D</span><span>E</span><span>A</span><span>S</span></span>
           <span>FOUND IN</span>
           <span>CREATION.</span>
         </h1>

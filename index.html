@@ -20,8 +20,7 @@
     .menu-inner a:nth-child(1):hover{color:#FFE600!important}
     .menu-inner a:nth-child(2):hover{color:#145BFF!important}
     .menu-inner a:nth-child(3):hover{color:#FF3FB4!important}
-    .menu-inner a:nth-child(4):hover{color:#FF1F1F!important}
-    .menu-inner a:nth-child(5):hover{color:#FF6500!important}
+    .menu-inner a:nth-child(4):hover{color:#FF6500!important}
     .lang-toggle{background:none;border:0;padding:0;cursor:pointer;text-decoration:none}
     .hero-start{color:inherit;text-decoration:none}
     .hero-start:hover,.lang-toggle:hover{text-decoration:underline}
@@ -40,9 +39,8 @@
   <nav id="menu" class="menu-panel" aria-hidden="true">
     <div class="menu-inner">
       <a href="#work">WORK</a>
-      <a href="#studio">STUDIO</a>
+      <a href="#studio">ABOUT</a>
       <a href="#abilities">ABILITIES</a>
-      <a href="#gallery">ABOUT</a>
       <a href="#contact">CONTACT</a>
       <p>PARIS / AVAILABLE WORLDWIDE</p>
     </div>
@@ -186,5 +184,19 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    const menuLabelCopy = {
+      en: ['WORK', 'ABOUT', 'ABILITIES', 'CONTACT'],
+      fr: ['PROJETS', 'À PROPOS', 'SAVOIR-FAIRE', 'CONTACT']
+    };
+    function syncMenuLabels(){
+      const lang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
+      document.querySelectorAll('.menu-inner > a').forEach((link, i) => {
+        if (menuLabelCopy[lang][i]) link.textContent = menuLabelCopy[lang][i];
+      });
+    }
+    syncMenuLabels();
+    document.querySelector('[data-lang-toggle]')?.addEventListener('click', syncMenuLabels);
+  </script>
 </body>
 </html>

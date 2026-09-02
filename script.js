@@ -4,6 +4,30 @@ const menu = document.querySelector('.menu-panel');
 const menuLinks = document.querySelectorAll('.menu-panel a');
 const langToggle = document.querySelector('[data-lang-toggle]');
 
+const psychedelicIdeasStyle = document.createElement('style');
+psychedelicIdeasStyle.textContent = `
+  .hero-title .ideas-rainbow > span{
+    display:inline-block!important;
+    position:relative;
+  }
+  .hero-title .ideas-rainbow > span:nth-child(1){
+    text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FF3FB4!important;
+  }
+  .hero-title .ideas-rainbow > span:nth-child(2){
+    text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FFE600!important;
+  }
+  .hero-title .ideas-rainbow > span:nth-child(3){
+    text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #145BFF!important;
+  }
+  .hero-title .ideas-rainbow > span:nth-child(4){
+    text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FF6500!important;
+  }
+  .hero-title .ideas-rainbow > span:nth-child(5){
+    text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,5px 5px 0 #FFE600!important;
+  }
+`;
+document.head.appendChild(psychedelicIdeasStyle);
+
 let currentLang = 'en';
 
 const copy = {

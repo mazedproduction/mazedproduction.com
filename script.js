@@ -69,14 +69,13 @@ const copy = {
     studioKicker: 'CRAFTING CULTURE<br>[ TELLING STORIES ]<br>SHAPING TOMORROW',
     studioTitle: 'MAZED IS A<br>CREATIVE<br>PRODUCTION<br>STUDIO.',
     studioCopy: 'We work with artists, brands and people who want more than content. We turn ideas into a visual language — one that can live as a film, an image, an identity, a campaign or an entire world.',
-    abilitiesLabel: 'OUR ABILITIES',
+    abilitiesLabel: 'SERVICES',
     abilities: [
-      ['CREATIVE DIRECTION','Concept / Campaign / Story'],
-      ['FILM & VIDEO','Production / Edit / Color'],
-      ['PHOTOGRAPHY','Editorial / Portrait / Brand'],
-      ['BRANDING','Identity / Type / Art Direction'],
-      ['SOCIAL & CAMPAIGNS','Concept / Content / Rollout'],
-      ['DIGITAL DESIGN','Web / Experience / Launch']
+      ['CONTENT','Photography / Film Production / Video Editing / Motion Design / Animation / Social Content / Creative Direction'],
+      ['BRAND STRATEGY','Creative Strategy / Brand Positioning / Art Direction / Brand Identity / Visual Guidelines / Creative Consulting'],
+      ['PRODUCTION','Creative Concepts / Production Planning / Crew Coordination / Casting / Location Scouting / Post Production'],
+      ['DIGITAL','Website Design / Content Systems / Campaign Assets / Social Strategy'],
+      ['CONSULTING','Creative Audit / Brand Workshops / Communication Strategy / Audience Research / Content Planning']
     ],
     galleryThe: 'THE',
     galleryTitle: 'GALLERY',
@@ -113,14 +112,13 @@ const copy = {
     studioKicker: 'CRÉER LA CULTURE<br>[ RACONTER DES HISTOIRES ]<br>FAÇONNER DEMAIN',
     studioTitle: 'MAZED EST UN<br>STUDIO DE<br>PRODUCTION<br>CRÉATIVE.',
     studioCopy: 'Nous travaillons avec des artistes, des marques et des personnes qui veulent plus que du contenu. Nous transformons les idées en langage visuel — capable de devenir un film, une image, une identité, une campagne ou un univers entier.',
-    abilitiesLabel: 'NOS SAVOIR-FAIRE',
+    abilitiesLabel: 'SERVICES',
     abilities: [
-      ['DIRECTION CRÉATIVE','Concept / Campagne / Récit'],
-      ['FILM & VIDÉO','Production / Montage / Étalonnage'],
-      ['PHOTOGRAPHIE','Éditorial / Portrait / Marque'],
-      ['BRANDING','Identité / Typographie / Direction artistique'],
-      ['SOCIAL & CAMPAGNES','Concept / Contenu / Déploiement'],
-      ['DESIGN DIGITAL','Web / Expérience / Lancement']
+      ['CONTENU','Photographie / Production film / Montage vidéo / Motion design / Animation / Contenu social / Direction créative'],
+      ['STRATÉGIE DE MARQUE','Stratégie créative / Positionnement de marque / Direction artistique / Identité de marque / Guidelines visuelles / Conseil créatif'],
+      ['PRODUCTION','Concepts créatifs / Planification de production / Coordination d’équipe / Casting / Repérage / Post-production'],
+      ['DIGITAL','Design de site web / Systèmes de contenu / Assets de campagne / Stratégie social media'],
+      ['CONSEIL','Audit créatif / Workshops de marque / Stratégie de communication / Étude d’audience / Planification de contenu']
     ],
     galleryThe: 'LA',
     galleryTitle: 'GALERIE',

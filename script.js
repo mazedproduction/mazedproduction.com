@@ -3,6 +3,22 @@ const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu-panel');
 const menuLinks = document.querySelectorAll('.menu-panel a');
 
+// Refined editorial palette: muted ochre, slate blue, sage, dusty mauve, terracotta.
+const editorialPalette = document.createElement('style');
+editorialPalette.textContent = `
+  .hero-title .ideas-rainbow span:nth-child(1){color:#C8A96B !important}
+  .hero-title .ideas-rainbow span:nth-child(2){color:#6F7FA8 !important}
+  .hero-title .ideas-rainbow span:nth-child(3){color:#7E9478 !important}
+  .hero-title .ideas-rainbow span:nth-child(4){color:#9A7F91 !important}
+  .hero-title .ideas-rainbow span:nth-child(5){color:#C77A5A !important}
+  .menu-inner a:nth-child(1):hover{color:#C8A96B !important}
+  .menu-inner a:nth-child(2):hover{color:#6F7FA8 !important}
+  .menu-inner a:nth-child(3):hover{color:#7E9478 !important}
+  .menu-inner a:nth-child(4):hover{color:#9A7F91 !important}
+  .menu-inner a:nth-child(5):hover{color:#C77A5A !important}
+`;
+document.head.appendChild(editorialPalette);
+
 window.addEventListener('scroll', () => {
   topbar.classList.toggle('scrolled', window.scrollY > 20);
 });

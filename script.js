@@ -110,7 +110,7 @@ const copy = {
     abilitiesLabel: 'NOS SAVOIR-FAIRE',
     abilities: [
       ['DIRECTION CRÉATIVE','Concept / Campagne / Récit'],
-      ['FILM & VIDÉO','Production / Montage / ÉtalONNAGE'],
+      ['FILM & VIDÉO','Production / Montage / Étalonnage'],
       ['PHOTOGRAPHIE','Éditorial / Portrait / Marque'],
       ['BRANDING','Identité / Typographie / Direction artistique'],
       ['SOCIAL & CAMPAGNES','Concept / Contenu / Déploiement'],

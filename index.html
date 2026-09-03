@@ -201,8 +201,8 @@
     }
     function syncFooterBackTop(){
       const lang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
-      const link = document.querySelector('.footer-mid a');
-      if (link) link.textContent = lang === 'fr' ? 'RETOUR EN HAUT ↑' : 'BACK TO TOP ↑';
+      const footerMid = document.querySelector('.footer-mid');
+      if (footerMid) footerMid.innerHTML = '<a href="#top">' + (lang === 'fr' ? 'RETOUR EN HAUT ↑' : 'BACK TO TOP ↑') + '</a>';
     }
     syncMenuLabels();
     syncContactHeadline();

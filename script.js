@@ -20,6 +20,18 @@ requestedAdjustments.textContent = `
     overflow-wrap:normal!important;
     font-size:clamp(16px,2.5vw,42px)!important;
   }
+  .footer-mid{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:6px!important;
+  }
+  .footer-copyright{
+    display:block;
+    font:9px "DM Mono",monospace;
+    letter-spacing:.04em;
+    white-space:nowrap;
+  }
   html[lang="fr"] .hero-title {
     font-size:clamp(54px,10vw,150px)!important;
     line-height:.82!important;
@@ -29,6 +41,8 @@ requestedAdjustments.textContent = `
   @media(max-width:820px){
     .contact-bottom a{font-size:clamp(11px,3.5vw,17px)!important}
     html[lang="fr"] .hero-title{font-size:clamp(42px,12.3vw,70px)!important;line-height:.88!important}
+    .footer-mid{align-items:flex-start!important}
+    .footer-copyright{font-size:8px}
   }
 `;
 document.head.appendChild(requestedAdjustments);
@@ -159,7 +173,7 @@ function applyLanguage(lang){
 
   setHTML('.callout h2', t.calloutTitle);
   setHTML('.contact h2', t.contactTitle);
-  setHTML('.footer-mid', '<a href="#top">' + t.backTop + '</a>');
+  setHTML('.footer-mid', '<a href="#top">' + t.backTop + '</a><span class="footer-copyright">©2023 MAZEDPRODUCTION. ALL RIGHTS RESERVED</span>');
 
   const emailLink = document.querySelector('.contact-bottom a[href^="mailto:"]');
   if (emailLink) emailLink.textContent = '↗ CONTACT@MAZEDPRODUCTION.COM';

@@ -44,7 +44,7 @@ const copy = {
     menuClose: 'CLOSE',
     startProject: 'START A PROJECT ↗',
     heroHTML: '<span>LOST IN</span><span class="outline ideas-rainbow"><span>I</span><span>D</span><span>E</span><span>A</span><span>S</span></span><span>FOUND IN</span><span>CREATION.</span>',
-    heroLead: "WE DON'T JUST FIND DIRECTION —<br>WE CREATE IT.",
+    heroLead: 'WE THINK, WE CREATE, WE BUILD.',
     heroCopy: 'MAZED is a creative production studio shaping bold visual worlds through film, photography and design. From the first thought to the final frame, we turn ideas into images that move culture forward.',
     projects: [
       ['PROJECT 001 / EDITORIAL', 'DAZED<br>LOVER BOY', ['ART DIRECTION','PHOTOGRAPHY','EDITORIAL','CREATIVE DIRECTION']],
@@ -56,11 +56,9 @@ const copy = {
     studioTitle: 'MAZED IS A<br>CREATIVE<br>PRODUCTION<br>STUDIO',
     studioCopy: 'working across photography, film, branding and digital. From the first idea to its final expression, we bring together creativity, strategy and production to shape bold visual worlds and turn ideas into meaningful experiences.',
     abilities: [
-      ['CONTENT','Photography / Film Production / Video Editing / Motion Design / Animation / Social Content / Creative Direction'],
-      ['BRAND STRATEGY','Creative Strategy / Brand Positioning / Art Direction / Brand Identity / Visual Guidelines / Creative Consulting'],
-      ['PRODUCTION','Creative Concepts / Production Planning / Crew Coordination / Casting / Location Scouting / Post Production'],
-      ['DIGITAL','Website Design / Content Systems / Campaign Assets / Social Strategy'],
-      ['CONSULTING','Creative Audit / Brand Workshops / Communication Strategy / Audience Research / Content Planning']
+      ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
+      ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
+      ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
     calloutTitle: 'IMPOSSIBLE<br>TO IGNORE.',
     contactTitle: "LET'S MAKE<br>SOMETHING<br>WORTH FINDING.",
@@ -74,7 +72,7 @@ const copy = {
     menuClose: 'FERMER',
     startProject: 'DÉMARRER UN PROJET ↗',
     heroHTML: '<span>OÙ LES IDÉES</span><span>SE PERDENT,</span><span>LA CRÉATION</span><span>COMMENCE</span>',
-    heroLead: 'NOUS NE CHERCHONS PAS SEULEMENT UNE DIRECTION —<br>NOUS LA CRÉONS.',
+    heroLead: 'WE THINK, WE CREATE, WE BUILD.',
     heroCopy: 'De la première idée à la dernière image, MAZED construit des univers visuels à travers le film, la photographie, le design et les récits culturels.',
     projects: [
       ['PROJET 001 / ÉDITORIAL', 'DAZED<br>LOVER BOY', ['DIRECTION ARTISTIQUE','PHOTOGRAPHIE','ÉDITORIAL','DIRECTION CRÉATIVE']],
@@ -86,11 +84,9 @@ const copy = {
     studioTitle: 'MAZED EST UN<br>STUDIO DE<br>PRODUCTION<br>CRÉATIVE.',
     studioCopy: 'Nous travaillons avec des artistes, des marques et des personnes qui veulent plus que du contenu. Nous transformons les idées en langage visuel — capable de devenir un film, une image, une identité, une campagne ou un univers entier.',
     abilities: [
-      ['CONTENU','Photographie / Production film / Montage vidéo / Motion design / Animation / Contenu social / Direction créative'],
-      ['STRATÉGIE DE MARQUE','Stratégie créative / Positionnement de marque / Direction artistique / Identité de marque / Guidelines visuelles / Conseil créatif'],
-      ['PRODUCTION','Concepts créatifs / Planification de production / Coordination d’équipe / Casting / Repérage / Post-production'],
-      ['DIGITAL','Design de site web / Systèmes de contenu / Assets de campagne / Stratégie social media'],
-      ['CONSEIL','Audit créatif / Workshops de marque / Stratégie de communication / Étude d’audience / Planification de contenu']
+      ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
+      ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
+      ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
     calloutTitle: 'IMPOSSIBLE<br>À IGNORER.',
     contactTitle: 'CRÉONS<br>QUELQUE CHOSE<br>QUI MÉRITE D’ÊTRE TROUVÉ.',
@@ -148,9 +144,15 @@ function applyLanguage(lang){
 
   document.querySelectorAll('.ability-grid a').forEach((row, i) => {
     const item = t.abilities[i];
-    if (!item) return;
+    if (!item) {
+      row.style.display = 'none';
+      return;
+    }
+    row.style.display = '';
+    const number = row.querySelector('span');
     const strong = row.querySelector('strong');
     const em = row.querySelector('em');
+    if (number) number.textContent = String(i + 1).padStart(2, '0');
     if (strong) strong.textContent = item[0];
     if (em) em.textContent = item[1];
   });

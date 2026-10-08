@@ -22,7 +22,7 @@ requestedAdjustments.textContent = `
     gap:14px!important;
     overflow:visible!important;
   }
-  .contact-label {
+  html body .contact .contact-label {
     margin:0;
     font:14px "DM Mono",monospace;
     letter-spacing:.04em;

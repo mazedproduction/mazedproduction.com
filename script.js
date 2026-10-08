@@ -239,6 +239,31 @@ requestedAdjustments.textContent = `
   }
 `;
 document.head.appendChild(requestedAdjustments);
+const hero = document.querySelector('.hero');
+if (hero && !hero.querySelector('.hero-atmosphere')) {
+  const atmosphere = document.createElement('div');
+  atmosphere.className = 'hero-atmosphere';
+  atmosphere.setAttribute('aria-hidden', 'true');
+  const beams = [
+    [7, -24, 4, '49,190,237', .65],
+    [19, -24, 18, '49,190,237', .34],
+    [24, -24, 3, '128,222,255', .75],
+    [36, 24, 2, '237,76,169', .35],
+    [48, 24, 12, '237,76,169', .22],
+    [65, 24, 5, '255,131,48', .8],
+    [74, 24, 20, '255,107,35', .4],
+    [79, 24, 3, '255,183,99', .72],
+    [91, 24, 9, '255,107,35', .42]
+  ];
+  beams.forEach(([position, angle, width, color, opacity], i) => {
+    const beam = document.createElement('span');
+    beam.className = 'hero-light-thread';
+    beam.style.cssText = '--x:' + position + '%;--angle:' + angle + 'deg;--beam-width:' + width + 'px;--light:' + color + ';--strength:' + opacity + ';--delay:' + (i * -2) + 's';
+    atmosphere.appendChild(beam);
+  });
+  hero.prepend(atmosphere);
+}
+
 setHTML('.contact-bottom', "<div class=\"contact-socials\"><a class=\"contact-social\" href=\"mailto:contact@mazedproduction.com\" aria-label=\"Email\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 6 9 7 9-7\"/></svg></a><span class=\"contact-social\" role=\"img\" aria-label=\"LinkedIn\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.45 7.89a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42ZM19 18.75h-2.95V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.76V9.2h2.83v1.31h.04c.39-.74 1.36-1.52 2.8-1.52 3 0 3.57 1.98 3.57 4.56v5.2Z\"/></svg></span><a class=\"contact-social\" href=\"https://www.instagram.com/mazedproduction/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Instagram\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><circle cx=\"17.5\" cy=\"6.5\" r=\"1\" fill=\"currentColor\" stroke=\"none\"/></svg></a></div>");
 
 const studioParagraph = document.querySelector('.studio-grid p');

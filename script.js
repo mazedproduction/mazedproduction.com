@@ -33,7 +33,7 @@ requestedAdjustments.textContent = `
     white-space:nowrap;
   }
   html[lang="fr"] .hero-title {
-    font-size:min(8.7vw,132px,11.5svh)!important;
+    font-size:min(5.4vw,88px,20svh)!important;
     line-height:.86!important;
     letter-spacing:-.055em!important;
   }
@@ -45,10 +45,24 @@ requestedAdjustments.textContent = `
   }
   .hero-title > span { display:block; white-space:nowrap; }
   html body .hero-title-wrap {
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     padding:clamp(12px,3svh,28px) 0!important;
     overflow:visible!important;
   }
-  html body .hero-title { overflow:visible!important; }
+  html body .hero-title { width:100%; text-align:center; overflow:visible!important; }
+  html body .studio-grid { grid-template-columns:minmax(0,1fr)!important; gap:0!important; }
+  html body .studio h2 {
+    font-size:min(7vw,112px)!important;
+    line-height:.9!important;
+    letter-spacing:-.055em!important;
+    overflow-wrap:normal!important;
+  }
+  html[lang="fr"] body .studio h2 {font-size:min(6.4vw,104px)!important;}
+  .studio h2 > span {display:block;white-space:nowrap;}
+  html body .studio p {max-width:900px!important;margin-left:0;line-height:1.4;}
   .hero-bottom { display:none!important; }
   .hero-bottom > p:not(.hero-copy) { display:none!important; }
   html body .hero-bottom { grid-template-columns:minmax(0,1fr)!important; }
@@ -71,7 +85,7 @@ requestedAdjustments.textContent = `
     html body .hero-copy {font-size:clamp(18px,4.5vw,25px)!important;line-height:1.25!important;}
     html body .callout h2 {font-size:12vw!important;line-height:.9!important;}
     .contact-bottom a{font-size:clamp(11px,3.5vw,17px)!important}
-    html[lang="fr"] .hero-title{font-size:min(8.7vw,11.5svh)!important;line-height:.88!important}
+    html[lang="fr"] .hero-title{font-size:min(5.4vw,20svh)!important;line-height:.9!important}
     .footer-mid{align-items:flex-start!important}
     .footer-copyright{font-size:8px}
   }
@@ -98,8 +112,8 @@ const copy = {
     ],
     viewProject: '[ VIEW PROJECT ]',
     marquee: ['GRAPHIC DESIGN','BRANDING','ADVERTISING','VISUAL IDENTITY','SOCIAL MEDIA','WEB DESIGN','FILM','PHOTOGRAPHY','CREATIVE DIRECTION'],
-    studioTitle: 'MAZED IS A<br>CREATIVE<br>PRODUCTION<br>STUDIO',
-    studioCopy: 'working across photography, film, branding and digital. From the first idea to its final expression, we bring together creativity, strategy and production to shape bold visual worlds and turn ideas into meaningful experiences.',
+    studioTitle: '<span>MAZED IS A CREATIVE</span><span>PRODUCTION STUDIO</span>',
+    studioCopy: 'MAZED is a creative production studio shaping ideas into images, stories and experiences.<br><br>Working across photography, film, design and digital, we bring together creative direction and production to build distinctive visual worlds for brands, artists and culture.',
     abilities: [
       ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
@@ -116,7 +130,7 @@ const copy = {
     menuOpen: 'MENU',
     menuClose: 'FERMER',
     startProject: 'DÉMARRER UN PROJET ↗',
-    heroHTML: '<span>Se perdre</span><span>dans les idées,</span><span>se trouver</span><span>dans la création.</span>',
+    heroHTML: '<span>Se perdre dans les idées,</span><span>se trouver dans la création.</span>',
     heroLead: '',
     heroCopy: '',
     projects: [
@@ -126,8 +140,8 @@ const copy = {
     ],
     viewProject: '[ VOIR LE PROJET ]',
     marquee: ['DESIGN GRAPHIQUE','BRANDING','PUBLICITÉ','IDENTITÉ VISUELLE','RÉSEAUX SOCIAUX','WEB DESIGN','FILM','PHOTOGRAPHIE','DIRECTION CRÉATIVE'],
-    studioTitle: 'MAZED EST UN<br>STUDIO DE<br>PRODUCTION<br>CRÉATIVE.',
-    studioCopy: 'Nous travaillons avec des artistes, des marques et des personnes qui veulent plus que du contenu. Nous transformons les idées en langage visuel — capable de devenir un film, une image, une identité, une campagne ou un univers entier.',
+    studioTitle: '<span>MAZED EST UN STUDIO</span><span>DE PRODUCTION CRÉATIVE.</span>',
+    studioCopy: 'MAZED est un studio de production créative qui transforme les idées en images, en récits et en expériences.<br><br>À travers la photographie, le film, le design et le digital, nous réunissons direction créative et production pour construire des univers visuels singuliers pour les marques, les artistes et la culture.',
     abilities: [
       ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
@@ -185,7 +199,7 @@ function applyLanguage(lang){
   marqueeSpans.forEach((span, i) => span.textContent = t.marquee[i % t.marquee.length]);
 
   setHTML('.studio h2', t.studioTitle);
-  setText('.studio p', t.studioCopy);
+  setHTML('.studio p', t.studioCopy);
 
   document.querySelectorAll('.ability-grid a').forEach((row, i) => {
     const item = t.abilities[i];

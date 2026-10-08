@@ -35,7 +35,7 @@
     .footer-instagram::after{content:none!important;display:none!important}
     .footer-backtop-hidden{display:none!important}
     html body footer{grid-template-columns:1fr!important}
-    html body .footer-mid{justify-self:center!important;align-items:center!important;text-align:center}
+    html body .footer-mid{justify-self:start!important;align-items:flex-start!important;text-align:left}
     html body .footer-copyright{font-size:12px!important;line-height:1.4;white-space:normal}
 
     @media(max-width:820px){
@@ -215,7 +215,7 @@
 
   <footer>
     <div class="mono footer-mid">
-      <a href="#top">BACK TO TOP ↑</a>
+      <a href="#top">BACK TO THE TOP ↑</a>
       <span class="footer-copyright">©2023 MAZEDPRODUCTION. ALL RIGHTS RESERVED</span>
     </div>
   </footer>
@@ -235,13 +235,13 @@
     function syncContactHeadline(){
       if (document.documentElement.lang !== 'fr') {
         const title = document.querySelector('.contact h2');
-        if (title) title.textContent = 'LET’S MAKE SOMETHING WORTH FINDING.';
+        if (title) title.textContent = 'LET’S MAKE SOMETHING WORTH FINDING';
       }
     }
     function syncFooterBackTop(){
       const lang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
       const footerMid = document.querySelector('.footer-mid');
-      if (footerMid) footerMid.innerHTML = '<a href="#top">' + (lang === 'fr' ? 'RETOUR EN HAUT ↑' : 'BACK TO TOP ↑') + '</a><span class="footer-copyright">©2023 MAZEDPRODUCTION. ALL RIGHTS RESERVED</span>';
+      if (footerMid) footerMid.innerHTML = '<a href="#top">' + (lang === 'fr' ? 'RETOUR EN HAUT ↑' : 'BACK TO THE TOP ↑') + '</a><span class="footer-copyright">©2023 MAZEDPRODUCTION. ALL RIGHTS RESERVED</span>';
     }
     syncMenuLabels();
     syncContactHeadline();

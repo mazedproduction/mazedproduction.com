@@ -15,10 +15,11 @@ requestedAdjustments.textContent = `
   html body .topbar .logo {font-size:30px!important;}
   html body .topbar .menu-btn {font-size:12px!important;padding:4px 6px!important;}
   html body .studio h2 {
-    width:min(100%,640px);
+    width:100%;
     max-width:100%;
-    margin:0 auto 24px;
-    text-align:center;
+    margin:0;
+    text-align:left;
+    font-weight:900;
     line-height:.92!important;
   }
   html body .studio h2 > span {
@@ -26,26 +27,36 @@ requestedAdjustments.textContent = `
     line-height:.92;
     letter-spacing:-.04em;
   }
-  .studio-copy {
-    width:min(100%,640px);
+  .studio-grid > div:last-child {
+    width:min(100%,1200px);
     margin:0 auto;
-    text-align:center;
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+    gap:clamp(32px,6vw,88px);
+    align-items:center;
+  }
+  .studio-copy {
+    width:100%;
+    min-width:0;
+    margin:0;
+    text-align:left;
   }
   html body .studio {padding-top:40px!important;padding-bottom:40px!important;}
   html body .studio .studio-copy p {
     margin:0;
     max-width:none!important;
-    font-family:"Courier Prime","Courier New",Courier,monospace;
-    font-size:clamp(16px,1.3vw,19px);
-    font-weight:400;
-    line-height:1.6;
+    font-family:Inter,Arial,sans-serif;
+    font-size:clamp(18px,1.65vw,24px);
+    font-weight:500;
+    line-height:1.45;
     letter-spacing:-.025em;
     text-wrap:pretty;
-    text-shadow:.2px .1px rgba(10,10,10,.2),-.15px 0 rgba(10,10,10,.12);
+    text-shadow:none;
   }
   .studio-copy strong {font-weight:700;}
   @media(max-width:820px){
     html body .studio {padding-top:30px!important;padding-bottom:30px!important;}
+    .studio-grid > div:last-child {grid-template-columns:minmax(0,1fr);gap:24px;}
   }
   @media(max-width:820px){
     html body .topbar,
@@ -226,8 +237,8 @@ const copy = {
     ],
     viewProject: '[ VIEW PROJECT ]',
     marquee: ['GRAPHIC DESIGN','BRANDING','ADVERTISING','VISUAL IDENTITY','SOCIAL MEDIA','WEB DESIGN','FILM','PHOTOGRAPHY','CREATIVE DIRECTION'],
-    studioTitle: '<span>MAZED PRODUCTION</span><span>IS A CREATIVE</span><span>PRODUCTION STUDIO</span>',
-    studioCopy: '<p><strong>MAZED PRODUCTION is a creative production studio shaping ideas into images, stories and experiences.</strong> Working across photography, film, design and digital, we bring together creative direction and production to build distinctive visual worlds for brands, artists and culture.</p>',
+    studioTitle: '<span>MAZED PRODUCTION IS</span><span>A CREATIVE</span><span>PRODUCTION STUDIO</span>',
+    studioCopy: '<p>shaping ideas into images, stories and experiences. Working across photography, film, design and digital, we bring together creative direction and production to build distinctive visual worlds for brands, artists and culture.</p>',
     abilities: [
       ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
@@ -254,8 +265,8 @@ const copy = {
     ],
     viewProject: '[ VOIR LE PROJET ]',
     marquee: ['DESIGN GRAPHIQUE','BRANDING','PUBLICITÉ','IDENTITÉ VISUELLE','RÉSEAUX SOCIAUX','WEB DESIGN','FILM','PHOTOGRAPHIE','DIRECTION CRÉATIVE'],
-    studioTitle: '<span>MAZED PRODUCTION</span><span>EST UN STUDIO DE</span><span>PRODUCTION CRÉATIVE.</span>',
-    studioCopy: '<p><strong>MAZED PRODUCTION est un studio de production créative qui transforme les idées en images, en récits et en expériences.</strong> À travers la photographie, le film, le design et le digital, nous réunissons direction créative et production pour construire des univers visuels singuliers pour les marques, les artistes et la culture.</p>',
+    studioTitle: '<span>MAZED PRODUCTION EST</span><span>UN STUDIO DE</span><span>PRODUCTION CRÉATIVE.</span>',
+    studioCopy: '<p>qui transforme les idées en images, en récits et en expériences. À travers la photographie, le film, le design et le digital, nous réunissons direction créative et production pour construire des univers visuels singuliers pour les marques, les artistes et la culture.</p>',
     abilities: [
       ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],

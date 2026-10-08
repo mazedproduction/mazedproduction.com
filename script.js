@@ -88,9 +88,9 @@ requestedAdjustments.textContent = `
     align-items:center;
   }
   .studio-copy {
-    width:min(100%,20rem);
+    width:100%;
     min-width:0;
-    margin:0 auto;
+    margin:0;
     text-align:justify;
   }
   html body .studio {padding-top:40px!important;padding-bottom:40px!important;}

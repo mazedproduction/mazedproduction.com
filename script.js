@@ -33,14 +33,14 @@ requestedAdjustments.textContent = `
     white-space:nowrap;
   }
   html[lang="fr"] .hero-title {
-    font-size:clamp(54px,10vw,150px)!important;
-    line-height:.82!important;
-    letter-spacing:-.065em!important;
+    font-size:min(8.7vw,132px)!important;
+    line-height:.96!important;
+    letter-spacing:-.055em!important;
   }
   html[lang="fr"] .hero-title > span { display:block!important; white-space:nowrap; }
   @media(max-width:820px){
     .contact-bottom a{font-size:clamp(11px,3.5vw,17px)!important}
-    html[lang="fr"] .hero-title{font-size:clamp(42px,12.3vw,70px)!important;line-height:.88!important}
+    html[lang="fr"] .hero-title{font-size:8.7vw!important;line-height:1!important}
     .footer-mid{align-items:flex-start!important}
     .footer-copyright{font-size:8px}
   }
@@ -85,7 +85,7 @@ const copy = {
     menuOpen: 'MENU',
     menuClose: 'FERMER',
     startProject: 'DÉMARRER UN PROJET ↗',
-    heroHTML: '<span>OÙ LES IDÉES</span><span>SE PERDENT,</span><span>LA CRÉATION</span><span>COMMENCE</span>',
+    heroHTML: '<span>Se perdre</span><span>dans les idées,</span><span>se trouver</span><span>dans la création.</span>',
     heroLead: 'WE THINK, WE CREATE, WE BUILD.',
     heroCopy: 'De la première idée à la dernière image, MAZED construit des univers visuels à travers le film, la photographie, le design et les récits culturels.',
     projects: [

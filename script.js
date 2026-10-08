@@ -33,14 +33,44 @@ requestedAdjustments.textContent = `
     white-space:nowrap;
   }
   html[lang="fr"] .hero-title {
-    font-size:min(8.7vw,132px)!important;
-    line-height:.96!important;
+    font-size:min(8.7vw,132px,11.5svh)!important;
+    line-height:.86!important;
     letter-spacing:-.055em!important;
   }
   html[lang="fr"] .hero-title > span { display:block!important; white-space:nowrap; }
+  html[lang="en"] .hero-title {
+    font-size:min(8vw,132px,20svh)!important;
+    line-height:.86!important;
+    letter-spacing:-.055em!important;
+  }
+  .hero-title > span { display:block; white-space:nowrap; }
+  html body .hero-title-wrap {
+    padding:clamp(12px,3svh,28px) 0!important;
+    overflow:visible!important;
+  }
+  html body .hero-title { overflow:visible!important; }
+  .hero-bottom > p:not(.hero-copy) { display:none!important; }
+  html body .hero-bottom { grid-template-columns:minmax(0,1fr)!important; }
+  html body .hero-copy {
+    font-family:Inter,Arial,sans-serif;
+    font-weight:600;
+    font-size:clamp(20px,2.1vw,32px)!important;
+    line-height:1.22!important;
+    letter-spacing:-.035em;
+    max-width:1000px!important;
+    margin:0 0 0 auto;
+  }
+  html body .callout h2 {
+    font-size:min(11.4vw,180px)!important;
+    line-height:.88!important;
+    letter-spacing:-.055em;
+    overflow-wrap:normal!important;
+  }
   @media(max-width:820px){
+    html body .hero-copy {font-size:clamp(18px,4.5vw,25px)!important;line-height:1.25!important;}
+    html body .callout h2 {font-size:12vw!important;line-height:.9!important;}
     .contact-bottom a{font-size:clamp(11px,3.5vw,17px)!important}
-    html[lang="fr"] .hero-title{font-size:8.7vw!important;line-height:1!important}
+    html[lang="fr"] .hero-title{font-size:min(8.7vw,11.5svh)!important;line-height:.88!important}
     .footer-mid{align-items:flex-start!important}
     .footer-copyright{font-size:8px}
   }
@@ -57,8 +87,8 @@ const copy = {
     menuOpen: 'MENU',
     menuClose: 'CLOSE',
     startProject: 'START A PROJECT ↗',
-    heroHTML: '<span>LOST IN</span><span class="outline ideas-rainbow"><span>I</span><span>D</span><span>E</span><span>A</span><span>S</span></span><span>FOUND IN</span><span>CREATION.</span>',
-    heroLead: 'WE THINK, WE CREATE, WE BUILD.',
+    heroHTML: '<span>LOST IN IDEAS</span><span>FOUND IN CREATION.</span>',
+    heroLead: '',
     heroCopy: 'MAZED is a creative production studio shaping bold visual worlds through film, photography and design. From the first thought to the final frame, we turn ideas into images that move culture forward.',
     projects: [
       ['PROJECT 001 / EDITORIAL', 'DAZED<br>LOVER BOY', ['ART DIRECTION','PHOTOGRAPHY','EDITORIAL','CREATIVE DIRECTION']],
@@ -74,7 +104,7 @@ const copy = {
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
       ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
-    calloutTitle: 'IMPOSSIBLE<br>TO IGNORE.',
+    calloutTitle: 'WE THINK,<br>WE CREATE,<br>WE BUILD.',
     contactTitle: "LET'S MAKE<br>SOMETHING<br>WORTH FINDING.",
     backTop: 'BACK TO TOP ↑'
   },
@@ -86,7 +116,7 @@ const copy = {
     menuClose: 'FERMER',
     startProject: 'DÉMARRER UN PROJET ↗',
     heroHTML: '<span>Se perdre</span><span>dans les idées,</span><span>se trouver</span><span>dans la création.</span>',
-    heroLead: 'WE THINK, WE CREATE, WE BUILD.',
+    heroLead: '',
     heroCopy: 'De la première idée à la dernière image, MAZED construit des univers visuels à travers le film, la photographie, le design et les récits culturels.',
     projects: [
       ['PROJET 001 / ÉDITORIAL', 'DAZED<br>LOVER BOY', ['DIRECTION ARTISTIQUE','PHOTOGRAPHIE','ÉDITORIAL','DIRECTION CRÉATIVE']],
@@ -102,7 +132,7 @@ const copy = {
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
       ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
-    calloutTitle: 'IMPOSSIBLE<br>À IGNORER.',
+    calloutTitle: 'WE THINK,<br>WE CREATE,<br>WE BUILD.',
     contactTitle: 'CRÉONS<br>QUELQUE CHOSE<br>QUI MÉRITE D’ÊTRE TROUVÉ.',
     backTop: 'RETOUR EN HAUT ↑'
   }

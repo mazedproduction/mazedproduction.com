@@ -54,10 +54,10 @@ html body .hero{
   transform:translate(-35%,-28%) rotate(-18deg);
   border-radius:48% 52% 65% 35% / 42% 60% 40% 58%;
   background:
-    radial-gradient(ellipse at 57% 38%,rgba(5,5,5,.98) 0%,rgba(5,5,5,.88) 27%,transparent 62%),
-    conic-gradient(from 30deg at 46% 54%,#071112,#143737 9%,#172943 18%,#36203e 28%,#262117 36%,#101618 44%,#163230 55%,#171f3a 64%,#3c243c 74%,#262517 84%,#071112 100%);
-  opacity:.48;
-  filter:blur(22px);
+    radial-gradient(ellipse at 57% 38%,rgba(5,5,5,.9) 0%,rgba(5,5,5,.65) 24%,transparent 58%),
+    conic-gradient(from 30deg at 46% 54%,#081518,#277977 9%,#254f8e 18%,#803569 28%,#746036 36%,#111f25 44%,#287c65 55%,#304a9b 64%,#8b3974 74%,#716335 84%,#081518 100%);
+  opacity:.8;
+  filter:blur(14px);
   mask-image:radial-gradient(ellipse at 50% 50%,#000 18%,rgba(0,0,0,.7) 45%,transparent 72%);
 }
 .hero-atmosphere::after{
@@ -77,7 +77,7 @@ html body .hero-title{
     height:66vw;
     left:44%;
     top:61%;
-    opacity:.4;
-    filter:blur(16px);
+    opacity:.7;
+    filter:blur(12px);
   }
 }

@@ -72,21 +72,24 @@ requestedAdjustments.textContent = `
     align-items:center;
   }
   .studio-copy {
-    width:100%;
+    width:min(100%,20rem);
     min-width:0;
-    margin:0;
-    text-align:left;
+    margin:0 auto;
+    text-align:justify;
   }
   html body .studio {padding-top:40px!important;padding-bottom:40px!important;}
   html body .studio .studio-copy p {
     margin:0;
     max-width:none!important;
     font-family:Inter,Arial,sans-serif;
-    font-size:clamp(18px,1.65vw,24px);
+    font-size:clamp(20px,1.65vw,24px);
     font-weight:500;
     line-height:1.45;
     letter-spacing:-.025em;
-    text-wrap:pretty;
+    text-align:justify;
+    text-align-last:left;
+    text-wrap:wrap;
+    hyphens:auto;
     text-shadow:none;
   }
   .studio-copy strong {font-weight:700;}

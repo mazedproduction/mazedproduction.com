@@ -51,7 +51,12 @@ requestedAdjustments.textContent = `
     transition:opacity .2s;
   }
   .contact-social svg {display:block;width:28px;height:28px;}
-  .contact-socials a:hover {opacity:.65;}
+  .contact-socials .contact-social {transition:color .18s ease;}
+  @media(hover:hover){
+    .contact-socials .contact-social:nth-child(1):hover {color:#FFE600;opacity:1;}
+    .contact-socials .contact-social:nth-child(2):hover {color:#145BFF;opacity:1;}
+    .contact-socials .contact-social:nth-child(3):hover {color:#FF3FB4;opacity:1;}
+  }
   .contact-socials a:focus-visible {outline:2px solid currentColor;outline-offset:3px;}
   html body .topbar,
   html body .topbar.scrolled {

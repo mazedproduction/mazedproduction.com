@@ -76,14 +76,33 @@ requestedAdjustments.textContent = `
     margin:0 0 0 auto;
   }
   html body .callout h2 {
-    font-size:min(11.4vw,180px)!important;
+    font-size:min(4.5vw,76px)!important;
+    white-space:nowrap;
+    text-align:center;
     line-height:.88!important;
     letter-spacing:-.055em;
     overflow-wrap:normal!important;
   }
+  html[lang="fr"] body .callout h2 {font-size:min(3.3vw,58px)!important;}
+  html body .contact h2 {
+    font-size:min(4.3vw,74px)!important;
+    line-height:1!important;
+    letter-spacing:-.055em!important;
+    white-space:nowrap;
+    text-align:center;
+    overflow:visible!important;
+  }
+  html[lang="fr"] body .contact h2 {font-size:min(3.1vw,54px)!important;}
+  .hero-title .hero-word {display:inline!important;transition:color .18s ease;}
+  @media(hover:hover){
+    .hero-title .hero-word[data-color="yellow"]:hover {color:#FFE600;}
+    .hero-title .hero-word[data-color="blue"]:hover {color:#145BFF;}
+    .hero-title .hero-word[data-color="pink"]:hover {color:#FF3FB4;}
+    .hero-title .hero-word[data-color="orange"]:hover {color:#FF6500;}
+  }
   @media(max-width:820px){
     html body .hero-copy {font-size:clamp(18px,4.5vw,25px)!important;line-height:1.25!important;}
-    html body .callout h2 {font-size:12vw!important;line-height:.9!important;}
+    html body .callout h2 {font-size:4.5vw!important;line-height:.9!important;}
     .contact-bottom a{font-size:clamp(11px,3.5vw,17px)!important}
     html[lang="fr"] .hero-title{font-size:min(5.4vw,20svh)!important;line-height:.9!important}
     .footer-mid{align-items:flex-start!important}
@@ -102,7 +121,7 @@ const copy = {
     menuOpen: 'MENU',
     menuClose: 'CLOSE',
     startProject: 'START A PROJECT ↗',
-    heroHTML: '<span>LOST IN IDEAS</span><span>FOUND IN CREATION.</span>',
+    heroHTML: '<span><span class="hero-word" data-color="yellow">LOST IN</span> <span class="hero-word" data-color="blue">IDEAS</span></span><span><span class="hero-word" data-color="pink">FOUND IN</span> <span class="hero-word" data-color="orange">CREATION.</span></span>',
     heroLead: '',
     heroCopy: '',
     projects: [
@@ -119,8 +138,8 @@ const copy = {
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
       ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
-    calloutTitle: 'WE THINK,<br>WE CREATE,<br>WE BUILD.',
-    contactTitle: "LET'S MAKE<br>SOMETHING<br>WORTH FINDING.",
+    calloutTitle: 'WE THINK, WE CREATE, WE BUILD.',
+    contactTitle: "LET’S MAKE SOMETHING WORTH FINDING.",
     backTop: 'BACK TO TOP ↑'
   },
   fr: {
@@ -130,7 +149,7 @@ const copy = {
     menuOpen: 'MENU',
     menuClose: 'FERMER',
     startProject: 'DÉMARRER UN PROJET ↗',
-    heroHTML: '<span>Se perdre dans les idées,</span><span>se trouver dans la création.</span>',
+    heroHTML: '<span><span class="hero-word" data-color="yellow">Se perdre</span> <span class="hero-word" data-color="blue">dans les idées,</span></span><span><span class="hero-word" data-color="pink">se trouver</span> <span class="hero-word" data-color="orange">dans la création.</span></span>',
     heroLead: '',
     heroCopy: '',
     projects: [
@@ -147,8 +166,8 @@ const copy = {
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
       ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
-    calloutTitle: 'WE THINK,<br>WE CREATE,<br>WE BUILD.',
-    contactTitle: 'CRÉONS<br>QUELQUE CHOSE<br>QUI MÉRITE D’ÊTRE TROUVÉ.',
+    calloutTitle: 'NOUS PENSONS, NOUS CRÉONS, NOUS CONSTRUISONS.',
+    contactTitle: 'CRÉONS QUELQUE CHOSE QUI MÉRITE D’ÊTRE TROUVÉ.',
     backTop: 'RETOUR EN HAUT ↑'
   }
 };

@@ -244,23 +244,6 @@ if (hero && !hero.querySelector('.hero-atmosphere')) {
   const atmosphere = document.createElement('div');
   atmosphere.className = 'hero-atmosphere';
   atmosphere.setAttribute('aria-hidden', 'true');
-  const beams = [
-    [7, -24, 4, '49,190,237', .65],
-    [19, -24, 18, '49,190,237', .34],
-    [24, -24, 3, '128,222,255', .75],
-    [36, 24, 2, '237,76,169', .35],
-    [48, 24, 12, '237,76,169', .22],
-    [65, 24, 5, '255,131,48', .8],
-    [74, 24, 20, '255,107,35', .4],
-    [79, 24, 3, '255,183,99', .72],
-    [91, 24, 9, '255,107,35', .42]
-  ];
-  beams.forEach(([position, angle, width, color, opacity], i) => {
-    const beam = document.createElement('span');
-    beam.className = 'hero-light-thread';
-    beam.style.cssText = '--x:' + position + '%;--angle:' + angle + 'deg;--beam-width:' + width + 'px;--light:' + color + ';--strength:' + opacity + ';--delay:' + (i * -2) + 's';
-    atmosphere.appendChild(beam);
-  });
   hero.prepend(atmosphere);
 }
 

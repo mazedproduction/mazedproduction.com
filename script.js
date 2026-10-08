@@ -6,6 +6,20 @@ const langToggle = document.querySelector('[data-lang-toggle]');
 
 const requestedAdjustments = document.createElement('style');
 requestedAdjustments.textContent = `
+  html body .topbar,
+  html body .topbar.scrolled {
+    height:56px!important;
+    padding:10px 22px!important;
+    transition:background .25s,border-color .25s;
+  }
+  html body .topbar .logo {font-size:30px!important;}
+  html body .topbar .menu-btn {font-size:12px!important;padding:4px 6px!important;}
+  @media(max-width:820px){
+    html body .topbar,
+    html body .topbar.scrolled {height:50px!important;padding:10px 16px!important;}
+    html body .topbar .logo {font-size:clamp(20px,5.8vw,24px)!important;}
+    html body .topbar .menu-btn {font-size:11px!important;}
+  }
   .menu-inner p,
   .studio-kicker,
   .callout > p { display:none!important; }

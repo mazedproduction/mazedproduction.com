@@ -193,6 +193,12 @@ window.addEventListener('resize', fitStudioTitle);
 document.fonts?.ready.then(fitStudioTitle);
 
 
+const servicesSection = document.querySelector('.abilities');
+const creativeSlogan = document.querySelector('.callout');
+if (servicesSection && creativeSlogan) {
+  servicesSection.before(creativeSlogan);
+}
+
 const servicesHeading = document.querySelector('.abilities > .section-label');
 if (servicesHeading) {
   servicesHeading.className = 'services-heading';

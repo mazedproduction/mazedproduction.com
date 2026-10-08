@@ -105,7 +105,9 @@ requestedAdjustments.textContent = `
     text-align:justify;
     text-align-last:left;
     text-wrap:wrap;
-    hyphens:auto;
+    hyphens:none;
+    word-break:normal;
+    overflow-wrap:normal;
     text-shadow:none;
   }
   .studio-copy strong {font-weight:700;}
@@ -122,7 +124,7 @@ requestedAdjustments.textContent = `
   .menu-inner p,
   .studio-kicker,
   .callout > p { display:none!important; }
-  .abilities {scroll-margin-top:90px;}
+  html body .abilities {scroll-margin-top:90px;padding-top:32px!important;padding-bottom:32px!important;}
   .services-heading {margin:0 0 30px;}
   .services-title {
     font-family:"Archivo Black",sans-serif;
@@ -135,7 +137,7 @@ requestedAdjustments.textContent = `
   @media(max-width:820px){
     html body .callout {padding-top:24px!important;padding-bottom:24px!important;}
     .services-heading {margin-bottom:24px;}
-    .abilities {scroll-margin-top:72px;}
+    html body .abilities {scroll-margin-top:72px;padding-top:24px!important;padding-bottom:24px!important;}
   }
   .contact-bottom { grid-template-columns:1fr!important; }
   .contact-bottom a {

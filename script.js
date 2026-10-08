@@ -6,6 +6,10 @@ const langToggle = document.querySelector('[data-lang-toggle]');
 
 const requestedAdjustments = document.createElement('style');
 requestedAdjustments.textContent = `
+  html body .hero {padding-top:56px!important;}
+  @media(max-width:820px){
+    html body .hero {padding-top:50px!important;}
+  }
 
   html body .contact {
     min-height:0!important;

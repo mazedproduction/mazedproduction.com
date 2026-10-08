@@ -6,6 +6,13 @@ const langToggle = document.querySelector('[data-lang-toggle]');
 
 const requestedAdjustments = document.createElement('style');
 requestedAdjustments.textContent = `
+  .contact h2 .contact-word {display:inline;transition:color .18s ease;}
+  @media(hover:hover){
+    .contact h2 .contact-word[data-color="yellow"]:hover {color:#FFE600;}
+    .contact h2 .contact-word[data-color="blue"]:hover {color:#145BFF;}
+    .contact h2 .contact-word[data-color="pink"]:hover {color:#FF3FB4;}
+    .contact h2 .contact-word[data-color="orange"]:hover {color:#FF6500;}
+  }
   html body .hero {padding-top:56px!important;}
   @media(max-width:820px){
     html body .hero {padding-top:50px!important;}
@@ -289,7 +296,7 @@ const copy = {
       ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
     calloutTitle: 'WE THINK, WE CREATE, WE BUILD.',
-    contactTitle: "LET’S MAKE SOMETHING WORTH FINDING",
+    contactTitle: '<span class="contact-word" data-color="yellow">LET’S MAKE</span> <span class="contact-word" data-color="blue">SOMETHING</span> <span class="contact-word" data-color="pink">WORTH</span> <span class="contact-word" data-color="orange">FINDING</span>',
     backTop: 'BACK TO THE TOP ↑'
   },
   fr: {
@@ -317,7 +324,7 @@ const copy = {
       ['BRAND & DIGITAL','Art Direction / Brand Identity / Visual Guidelines / Website Design / Campaign Assets / Content Systems / Social Content / Social Strategy']
     ],
     calloutTitle: 'NOUS PENSONS, NOUS CRÉONS, NOUS CONSTRUISONS.',
-    contactTitle: 'CRÉONS QUELQUE CHOSE QUI MÉRITE D’ÊTRE TROUVÉ',
+    contactTitle: '<span class="contact-word" data-color="yellow">CRÉONS</span> <span class="contact-word" data-color="blue">QUELQUE CHOSE</span> <span class="contact-word" data-color="pink">QUI MÉRITE</span> <span class="contact-word" data-color="orange">D’ÊTRE TROUVÉ</span>',
     backTop: 'RETOUR EN HAUT ↑'
   }
 };

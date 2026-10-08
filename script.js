@@ -8,8 +8,22 @@ const requestedAdjustments = document.createElement('style');
 requestedAdjustments.textContent = `
   .menu-inner p,
   .studio-kicker,
-  .abilities > .section-label,
   .callout > p { display:none!important; }
+  .abilities {scroll-margin-top:90px;}
+  .services-heading {margin:0 0 30px;}
+  .services-title {
+    font-family:"Archivo Black",sans-serif;
+    font-size:clamp(32px,6vw,88px);
+    line-height:1;
+    letter-spacing:-.055em;
+    margin:0;
+  }
+  html body .callout {padding-top:32px!important;padding-bottom:32px!important;}
+  @media(max-width:820px){
+    html body .callout {padding-top:24px!important;padding-bottom:24px!important;}
+    .services-heading {margin-bottom:24px;}
+    .abilities {scroll-margin-top:72px;}
+  }
   .contact-bottom { grid-template-columns:1fr!important; }
   .contact-bottom a {
     display:inline-block!important;
@@ -110,6 +124,12 @@ requestedAdjustments.textContent = `
   }
 `;
 document.head.appendChild(requestedAdjustments);
+
+const servicesHeading = document.querySelector('.abilities > .section-label');
+if (servicesHeading) {
+  servicesHeading.className = 'services-heading';
+  servicesHeading.innerHTML = '<h2 class="services-title">SERVICES</h2>';
+}
 
 let currentLang = 'en';
 

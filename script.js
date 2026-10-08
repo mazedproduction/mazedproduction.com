@@ -49,6 +49,7 @@ requestedAdjustments.textContent = `
     overflow:visible!important;
   }
   html body .hero-title { overflow:visible!important; }
+  .hero-bottom { display:none!important; }
   .hero-bottom > p:not(.hero-copy) { display:none!important; }
   html body .hero-bottom { grid-template-columns:minmax(0,1fr)!important; }
   html body .hero-copy {
@@ -89,7 +90,7 @@ const copy = {
     startProject: 'START A PROJECT ↗',
     heroHTML: '<span>LOST IN IDEAS</span><span>FOUND IN CREATION.</span>',
     heroLead: '',
-    heroCopy: 'MAZED is a creative production studio shaping bold visual worlds through film, photography and design. From the first thought to the final frame, we turn ideas into images that move culture forward.',
+    heroCopy: '',
     projects: [
       ['PROJECT 001 / EDITORIAL', 'DAZED<br>LOVER BOY', ['ART DIRECTION','PHOTOGRAPHY','EDITORIAL','CREATIVE DIRECTION']],
       ['PROJECT 002 / FILM', 'AFTER<br>MIDNIGHT', ['FILM','PRODUCTION','EDITING','COLOR']],
@@ -117,7 +118,7 @@ const copy = {
     startProject: 'DÉMARRER UN PROJET ↗',
     heroHTML: '<span>Se perdre</span><span>dans les idées,</span><span>se trouver</span><span>dans la création.</span>',
     heroLead: '',
-    heroCopy: 'De la première idée à la dernière image, MAZED construit des univers visuels à travers le film, la photographie, le design et les récits culturels.',
+    heroCopy: '',
     projects: [
       ['PROJET 001 / ÉDITORIAL', 'DAZED<br>LOVER BOY', ['DIRECTION ARTISTIQUE','PHOTOGRAPHIE','ÉDITORIAL','DIRECTION CRÉATIVE']],
       ['PROJET 002 / FILM', 'AFTER<br>MIDNIGHT', ['FILM','PRODUCTION','MONTAGE','ÉTALONNAGE']],

@@ -41,7 +41,7 @@ requestedAdjustments.textContent = `
   }
   html body .studio .studio-copy p:first-child {
     font-size:clamp(22px,1.9vw,28px);
-    font-weight:500;
+    font-weight:700;
     line-height:1.4;
     letter-spacing:-.025em;
     margin-bottom:24px;

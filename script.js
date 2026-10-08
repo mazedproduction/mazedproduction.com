@@ -17,7 +17,7 @@ requestedAdjustments.textContent = `
   html body .studio h2 {
     width:min(100%,640px);
     max-width:100%;
-    margin:0 auto 48px;
+    margin:0 auto 24px;
     text-align:center;
     line-height:.92!important;
   }
@@ -31,20 +31,21 @@ requestedAdjustments.textContent = `
     margin:0 auto;
     text-align:center;
   }
+  html body .studio {padding-top:40px!important;padding-bottom:40px!important;}
   html body .studio .studio-copy p {
     margin:0;
     max-width:none!important;
-    font-size:clamp(18px,1.45vw,21px);
-    line-height:1.65;
-    letter-spacing:-.015em;
-    text-wrap:pretty;
-  }
-  html body .studio .studio-copy p:first-child {
-    font-size:clamp(22px,1.9vw,28px);
-    font-weight:700;
-    line-height:1.4;
+    font-family:"Courier Prime","Courier New",Courier,monospace;
+    font-size:clamp(16px,1.3vw,19px);
+    font-weight:400;
+    line-height:1.6;
     letter-spacing:-.025em;
-    margin-bottom:24px;
+    text-wrap:pretty;
+    text-shadow:.2px .1px rgba(10,10,10,.2),-.15px 0 rgba(10,10,10,.12);
+  }
+  .studio-copy strong {font-weight:700;}
+  @media(max-width:820px){
+    html body .studio {padding-top:30px!important;padding-bottom:30px!important;}
   }
   @media(max-width:820px){
     html body .topbar,
@@ -225,8 +226,8 @@ const copy = {
     ],
     viewProject: '[ VIEW PROJECT ]',
     marquee: ['GRAPHIC DESIGN','BRANDING','ADVERTISING','VISUAL IDENTITY','SOCIAL MEDIA','WEB DESIGN','FILM','PHOTOGRAPHY','CREATIVE DIRECTION'],
-    studioTitle: '<span>MAZED IS A</span><span>CREATIVE</span><span>PRODUCTION STUDIO</span>',
-    studioCopy: '<p>MAZED is a creative production studio shaping ideas into images, stories and experiences.</p><p>Working across photography, film, design and digital, we bring together creative direction and production to build distinctive visual worlds for brands, artists and culture.</p>',
+    studioTitle: '<span>MAZED PRODUCTION</span><span>IS A CREATIVE</span><span>PRODUCTION STUDIO</span>',
+    studioCopy: '<p><strong>MAZED PRODUCTION is a creative production studio shaping ideas into images, stories and experiences.</strong> Working across photography, film, design and digital, we bring together creative direction and production to build distinctive visual worlds for brands, artists and culture.</p>',
     abilities: [
       ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],
@@ -253,8 +254,8 @@ const copy = {
     ],
     viewProject: '[ VOIR LE PROJET ]',
     marquee: ['DESIGN GRAPHIQUE','BRANDING','PUBLICITÉ','IDENTITÉ VISUELLE','RÉSEAUX SOCIAUX','WEB DESIGN','FILM','PHOTOGRAPHIE','DIRECTION CRÉATIVE'],
-    studioTitle: '<span>MAZED EST UN</span><span>STUDIO DE PRODUCTION</span><span>CRÉATIVE.</span>',
-    studioCopy: '<p>MAZED est un studio de production créative qui transforme les idées en images, en récits et en expériences.</p><p>À travers la photographie, le film, le design et le digital, nous réunissons direction créative et production pour construire des univers visuels singuliers pour les marques, les artistes et la culture.</p>',
+    studioTitle: '<span>MAZED PRODUCTION</span><span>EST UN STUDIO DE</span><span>PRODUCTION CRÉATIVE.</span>',
+    studioCopy: '<p><strong>MAZED PRODUCTION est un studio de production créative qui transforme les idées en images, en récits et en expériences.</strong> À travers la photographie, le film, le design et le digital, nous réunissons direction créative et production pour construire des univers visuels singuliers pour les marques, les artistes et la culture.</p>',
     abilities: [
       ['STRATEGY','Creative Strategy / Brand Positioning / Creative Consulting / Communication Strategy / Audience Research / Content Planning'],
       ['CONTENT & PRODUCTION','Photography / Film Production / Creative Direction / Production Planning / Casting / Location Scouting / Video Editing / Motion Design / Animation / Post-Production'],

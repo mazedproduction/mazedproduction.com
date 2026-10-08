@@ -35,7 +35,9 @@
     .footer-instagram::after{content:none!important;display:none!important}
     .footer-backtop-hidden{display:none!important}
     html body footer{grid-template-columns:1fr!important}
-    html body .footer-mid{justify-self:start!important;align-items:flex-start!important;text-align:left}
+    html body .footer-mid{width:100%;justify-self:stretch!important;align-items:stretch!important;text-align:left}
+    html body .footer-mid > a{align-self:flex-start}
+    html body .footer-copyright{width:100%;text-align:center;align-self:center}
     html body .footer-copyright{font-size:12px!important;line-height:1.4;white-space:normal}
 
     @media(max-width:820px){
@@ -235,7 +237,7 @@
     function syncContactHeadline(){
       if (document.documentElement.lang !== 'fr') {
         const title = document.querySelector('.contact h2');
-        if (title) title.textContent = 'LET’S MAKE SOMETHING WORTH FINDING';
+        if (title) title.innerHTML = '<span class="contact-word" data-color="yellow">LET’S MAKE</span> <span class="contact-word" data-color="blue">SOMETHING</span> <span class="contact-word" data-color="pink">WORTH</span> <span class="contact-word" data-color="orange">FINDING</span>';
       }
     }
     function syncFooterBackTop(){

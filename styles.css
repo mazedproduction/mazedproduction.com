@@ -28,3 +28,70 @@ footer{background:var(--ink);color:var(--paper)}
 .footer-instagram svg{display:none!important}
 .footer-instagram::after{content:"INSTAGRAM"}
 @media(max-width:820px){.footer-instagram{font-size:clamp(24px,7vw,34px)}}
+/* Cinematic light field: an abstract, dark atmosphere for the homepage. */
+html body .hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#050609;
+  color:#f5f3ef;
+}
+.hero-atmosphere{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 8% 35%,rgba(21,101,136,.27),transparent 53%),
+    radial-gradient(ellipse at 88% 66%,rgba(169,63,17,.29),transparent 51%),
+    radial-gradient(ellipse at 50% 95%,rgba(101,24,74,.11),transparent 42%),
+    #050609;
+}
+.hero-atmosphere::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    repeating-linear-gradient(66deg,transparent 0,transparent 96px,rgba(255,126,51,.12) 97px,transparent 99px,transparent 188px),
+    repeating-linear-gradient(114deg,transparent 0,transparent 120px,rgba(99,209,250,.1) 121px,transparent 123px,transparent 212px);
+  mask-image:linear-gradient(transparent 0%,#000 25%,#000 80%,transparent);
+  opacity:.6;
+}
+.hero-atmosphere::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 50% 51%,rgba(5,6,9,.65),rgba(5,6,9,.25) 52%,transparent 79%),
+    linear-gradient(#050609 0%,transparent 23%,transparent 76%,#050609 100%);
+}
+.hero-light-thread{
+  position:absolute;
+  left:var(--x);
+  top:-35%;
+  height:175%;
+  width:var(--beam-width);
+  opacity:var(--strength);
+  transform:rotate(var(--angle));
+  transform-origin:center;
+  background:linear-gradient(90deg,transparent,rgba(var(--light),.16) 20%,rgba(var(--light),.8) 50%,rgba(var(--light),.12) 80%,transparent);
+  box-shadow:0 0 20px 5px rgba(var(--light),.12),0 0 70px 20px rgba(var(--light),.06);
+  animation:hero-light-breathe 20s ease-in-out var(--delay) infinite alternate;
+}
+html body .hero-title{
+  position:relative;
+  text-shadow:0 2px 24px rgba(0,0,0,.8);
+}
+.hero .hero-meta{position:relative;border-top-color:rgba(245,243,239,.2)}
+@keyframes hero-light-breathe{
+  from{opacity:calc(var(--strength) * .55);transform:rotate(var(--angle)) translateX(-8px)}
+  to{opacity:var(--strength);transform:rotate(var(--angle)) translateX(8px)}
+}
+@media(max-width:820px){
+  .hero-light-thread{height:160%;top:-25%;box-shadow:0 0 18px 3px rgba(var(--light),.12)}
+  .hero-atmosphere::before{opacity:.35}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-light-thread{animation:none}
+}

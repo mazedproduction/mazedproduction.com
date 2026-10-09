@@ -126,3 +126,34 @@ html body .editorial-project .slide-info h2{
   html body .editorial-project .slide-info h2{font-size:clamp(38px,10vw,76px);margin:24px 0}
 }
 @media(prefers-reduced-motion:reduce){.editorial-thumb img{transition:none}}
+
+/* Editorial contact sheets: aligned, uncropped photographs with a slow loop. */
+html body .editorial-project .editorial-preview{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:minmax(0,1fr);
+  gap:clamp(10px,1.25vw,20px);
+  height:min(68svh,680px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);
+  mask-image:linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);
+}
+.editorial-column{height:100%;min-width:0;overflow:hidden}
+.editorial-track{animation:editorial-roll 58s linear infinite;animation-play-state:paused;will-change:transform}
+.editorial-column:nth-child(2) .editorial-track{animation-duration:66s;animation-direction:reverse}
+.editorial-column:nth-child(3) .editorial-track{animation-duration:62s}
+.editorial-project.active .editorial-track{animation-play-state:running}
+.editorial-group{display:flex;flex-direction:column;gap:clamp(10px,1.25vw,20px);padding-bottom:clamp(10px,1.25vw,20px)}
+html body .editorial-preview .editorial-thumb{height:auto;flex:none}
+html body .editorial-preview .editorial-thumb img{width:100%;height:auto;object-fit:contain;transition:opacity .25s}
+.editorial-preview:hover .editorial-track,
+.editorial-preview:focus-within .editorial-track{animation-play-state:paused}
+@keyframes editorial-roll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@media(max-width:820px){
+  html body .editorial-project .editorial-preview{height:58svh;gap:8px}
+  .editorial-group{gap:8px;padding-bottom:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .editorial-track{animation:none;will-change:auto}
+  .editorial-group[aria-hidden="true"]{display:none}
+  .editorial-column{overflow-y:auto;scrollbar-width:thin}
+  html body .editorial-project .editorial-preview{mask-image:none;-webkit-mask-image:none}
+}

@@ -4,6 +4,8 @@ const mobileMenuBtn = document.querySelector('.mobile-brand-menu');
 const menu = document.querySelector('.menu-panel');
 const menuLinks = document.querySelectorAll('.menu-panel a');
 const langToggle = document.querySelector('[data-lang-toggle]');
+const mobileLayoutQuery = window.matchMedia('(max-width:820px)');
+let studioOriginalPosition=null;
 
 const requestedAdjustments = document.createElement('style');
 requestedAdjustments.textContent = `
@@ -379,6 +381,7 @@ function applyLanguage(lang){
   updateMobileMenuLabel();
   setText('[data-i18n="startProject"]', t.startProject);
   setHTML('.hero-title', t.heroHTML);
+  syncMobileLayout();
   setHTML('.hero-bottom > p:first-child', t.heroLead);
   setText('.hero-copy', t.heroCopy);
 
@@ -486,3 +489,22 @@ if (slider) {
 }
 
 applyLanguage(new URLSearchParams(location.search).get('lang')==='fr'?'fr':'en');
+
+// Keep desktop order and copy intact; organise the mobile reading flow.
+studioOriginalPosition=document.createComment('original-about-position');
+document.querySelector('.studio')?.before(studioOriginalPosition);
+function syncMobileLayout(){
+  const studio=document.querySelector('.studio');
+  const services=document.querySelector('#services');
+  if(studio && services && studioOriginalPosition){
+    if(mobileLayoutQuery.matches) services.after(studio);
+    else studioOriginalPosition.after(studio);
+  }
+  if(document.documentElement.lang==='fr'){
+    const ideas=document.querySelector('.hero-title .hero-word[data-color="blue"]');
+    if(ideas) ideas.textContent=mobileLayoutQuery.matches?'dans les idées':'dans les idées,';
+  }
+}
+mobileLayoutQuery.addEventListener('change',()=>{syncMobileLayout();fitStudioTitle();});
+syncMobileLayout();
+fitStudioTitle();

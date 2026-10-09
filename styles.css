@@ -49,30 +49,53 @@ html body .hero-meta{border-top:0;position:relative}
 html body .hero-title{position:relative;text-shadow:0 2px 24px rgba(0,0,0,.8)}
 .featured .slide-info{background:transparent}
 
-/* Photographic sky, with slower cloud drift behind the scrolling words. */
+
+/* Painted sky dissolving from black petrol into warm paper. */
 html body .marquee-section{
   position:relative;
   isolation:isolate;
-  background:#2789ce;
+  background:#050505;
   color:#071b2e;
-  border-top:0;
-  border-bottom:0;
+  border:0;
 }
 .marquee-section::before{
   content:"";
   position:absolute;
-  inset:-50% -16%;
+  inset:0 -10%;
   z-index:-1;
   pointer-events:none;
-  background:#2789ce url("/assets/cloud-sky.svg") center 54% / cover no-repeat;
+  background:url("/assets/painted-cloud-sky.svg") center / 100% 100% no-repeat;
   animation:cloud-drift 38s ease-in-out infinite alternate;
   will-change:transform;
 }
-html body .marquee-track{position:relative;color:#071b2e}
-@keyframes cloud-drift{
-  from{transform:translate3d(-3%,0,0) scale(1.04)}
-  to{transform:translate3d(3%,2%,0) scale(1.08)}
+.marquee-section::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.55) 9%,transparent 28%,transparent 72%,rgba(242,239,231,.6) 90%,var(--paper) 100%);
 }
+html body .marquee-track{
+  position:relative;
+  color:#071b2e;
+  padding:42px 0;
+}
+.featured::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:48px;
+  pointer-events:none;
+  background:linear-gradient(transparent,#050505);
+}
+@keyframes cloud-drift{
+  from{transform:translate3d(-3%,0,0)}
+  to{transform:translate3d(3%,0,0)}
+}
+@media(max-width:820px){html body .marquee-track{padding:34px 0}}
 @media(prefers-reduced-motion:reduce){
   .marquee-section::before{animation:none;will-change:auto}
 }

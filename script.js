@@ -494,14 +494,14 @@ applyLanguage(new URLSearchParams(location.search).get('lang')==='fr'?'fr':'en')
 studioOriginalPosition=document.createComment('original-about-position');
 document.querySelector('.studio')?.before(studioOriginalPosition);
 function syncResponsiveMarquee(){
-  const words=mobileLayoutQuery.matches?copy[currentLang].marquee:(currentLang==='fr'?['NOUS PENSONS,','NOUS CRÉONS,','NOUS CONSTRUISONS']:['WE THINK,','WE CREATE,','WE BUILD']);
+  const words=currentLang==='fr'?['NOUS PENSONS,','NOUS CRÉONS,','NOUS CONSTRUISONS']:['WE THINK,','WE CREATE,','WE BUILD'];
   document.querySelectorAll('.marquee-track span').forEach((span,i)=>{span.textContent=words[i%words.length];});
 }
 function syncMobileLayout(){
   syncResponsiveMarquee();
   {
     const navigation=document.querySelector('.menu-inner');
-    const readingOrder=mobileLayoutQuery.matches?['work','services','studio','contact']:['work','studio','services','contact'];
+    const readingOrder=['work','studio','services','contact'];
     readingOrder.forEach(id=>{
       const link=navigation?.querySelector('a[href="#'+id+'"]');
       const caption=navigation?.querySelector('p');
@@ -512,8 +512,7 @@ function syncMobileLayout(){
   const studio=document.querySelector('.studio');
   const services=document.querySelector('#services');
   if(studio && services && studioOriginalPosition){
-    if(mobileLayoutQuery.matches) services.after(studio);
-    else studioOriginalPosition.after(studio);
+    studioOriginalPosition.after(studio);
   }
   if(document.documentElement.lang==='fr'){
     const ideas=document.querySelector('.hero-title .hero-word[data-color="blue"]');

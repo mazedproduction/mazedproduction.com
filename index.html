@@ -161,6 +161,28 @@
       html body .studio{padding-top:18px!important}
       html body .studio-grid{padding-top:4px}
     }
+  
+    @media(max-width:820px){
+      html body .abilities>.services-heading{
+        position:relative;
+        border-top:1px solid rgba(16,39,42,.28);
+        padding-top:24px;
+        margin-bottom:24px;
+      }
+      html body .abilities>.services-heading::before{
+        content:"";
+        position:absolute;
+        top:-1px;
+        left:0;
+        width:42px;
+        height:2px;
+        background:#8d526a;
+        opacity:.65;
+      }
+      html body .abilities>.services-heading .services-title{
+        color:#0c1719;
+      }
+    }
   </style>
 </head>
 <body>

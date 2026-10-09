@@ -50,7 +50,7 @@ html body .hero-title{position:relative;text-shadow:0 2px 24px rgba(0,0,0,.8)}
 .featured .slide-info{background:transparent}
 
 
-/* Painted sky dissolving from black petrol into warm paper. */
+/* Abstract fluid mist dissolving from black petrol into warm paper. */
 html body .marquee-section{
   position:relative;
   isolation:isolate;
@@ -64,7 +64,7 @@ html body .marquee-section{
   inset:0;
   z-index:-1;
   pointer-events:none;
-  background:url("/assets/painted-cloud-sky.svg") center / 120% 100% repeat-x;
+  background:url("/assets/abstract-sky-flow.svg") center / 120% 100% repeat-x;
   animation:cloud-drift 38s ease-in-out infinite alternate;
   will-change:background-position;
 }

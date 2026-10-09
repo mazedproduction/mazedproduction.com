@@ -409,7 +409,7 @@ function applyLanguage(lang){
 
   syncResponsiveMarquee();
 
-  setHTML('.studio h2', lang==='fr' && mobileLayoutQuery.matches ? '<span>MAZED PRODUCTION</span><span>EST UN STUDIO DE PRODUCTION</span><span>CRÉATIVE</span>' : t.studioTitle);
+  setHTML('.studio h2', lang==='fr' && mobileLayoutQuery.matches ? '<span>MAZED PRODUCTION</span><span>EST UN STUDIO DE PRODUCTION</span><span>CREATIVE</span>' : t.studioTitle);
   setHTML('.studio-copy', t.studioCopy);
   fitStudioTitle();
 

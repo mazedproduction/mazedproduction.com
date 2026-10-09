@@ -394,9 +394,10 @@ function applyLanguage(lang){
       view.textContent = t.viewProject;
       if (i === 1) view.href = '/work/fucking-young-magazine-editorial.html?lang=' + lang;
     }
-    if(i===1) slide.querySelectorAll('.editorial-thumb').forEach((link,j)=>{
-      link.href='/work/fucking-young-magazine-editorial.html?lang='+lang+'#'+(j+1);
-      link.setAttribute('aria-label',(lang==='fr'?'Ouvrir la photographie ':'Open photograph ')+(j+1));
+    if(i===1) slide.querySelectorAll('.editorial-thumb').forEach((link)=>{
+      const photo=Number(link.querySelector('img').getAttribute('src').match(/\/(\d+)\.svg$/)[1]);
+      link.href='/work/fucking-young-magazine-editorial.html?lang='+lang+'#'+photo;
+      link.setAttribute('aria-label',(lang==='fr'?'Ouvrir la photographie ':'Open photograph ')+photo);
     });
   });
 

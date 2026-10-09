@@ -305,7 +305,7 @@ const copy = {
     heroCopy: '',
     projects: [
       ['PROJECT 001 / EDITORIAL', 'DAZED<br>LOVER BOY', ['ART DIRECTION','PHOTOGRAPHY','EDITORIAL','CREATIVE DIRECTION']],
-      ['PROJECT 002 / FILM', 'AFTER<br>MIDNIGHT', ['FILM','PRODUCTION','EDITING','COLOR']],
+      ['PROJECT 002 / EDITORIAL', 'FUCKING<br>YOUNG<br>MAGAZINE<br>EDITORIAL', ['PHOTOGRAPHY','EDITORIAL','MAGAZINE','FUCKING YOUNG']],
       ['PROJECT 003 / IDENTITY', 'OBJECTS<br>OF DESIRE', ['BRANDING','CAMPAIGN','SOCIAL','VISUAL IDENTITY']]
     ],
     viewProject: '[ VIEW PROJECT ]',
@@ -333,7 +333,7 @@ const copy = {
     heroCopy: '',
     projects: [
       ['PROJET 001 / ÉDITORIAL', 'DAZED<br>LOVER BOY', ['DIRECTION ARTISTIQUE','PHOTOGRAPHIE','ÉDITORIAL','DIRECTION CRÉATIVE']],
-      ['PROJET 002 / FILM', 'AFTER<br>MIDNIGHT', ['FILM','PRODUCTION','MONTAGE','ÉTALONNAGE']],
+      ['PROJET 002 / ÉDITORIAL', 'FUCKING<br>YOUNG<br>MAGAZINE<br>EDITORIAL', ['PHOTOGRAPHIE','ÉDITORIAL','MAGAZINE','FUCKING YOUNG']],
       ['PROJET 003 / IDENTITÉ', 'OBJECTS<br>OF DESIRE', ['BRANDING','CAMPAGNE','SOCIAL','IDENTITÉ VISUELLE']]
     ],
     viewProject: '[ VOIR LE PROJET ]',
@@ -390,7 +390,14 @@ function applyLanguage(lang){
     if (kicker) kicker.textContent = project[0];
     if (title) title.innerHTML = project[1];
     tags.forEach((tag, j) => { if (project[2][j]) tag.textContent = project[2][j]; });
-    if (view) view.textContent = t.viewProject;
+    if (view) {
+      view.textContent = t.viewProject;
+      if (i === 1) view.href = '/work/fucking-young-magazine-editorial.html?lang=' + lang;
+    }
+    if(i===1) slide.querySelectorAll('.editorial-thumb').forEach((link,j)=>{
+      link.href='/work/fucking-young-magazine-editorial.html?lang='+lang+'#'+(j+1);
+      link.setAttribute('aria-label',(lang==='fr'?'Ouvrir la photographie ':'Open photograph ')+(j+1));
+    });
   });
 
   const marqueeSpans = document.querySelectorAll('.marquee-track span');
@@ -466,4 +473,4 @@ if (slider) {
   }, {passive:true});
 }
 
-applyLanguage('en');
+applyLanguage(new URLSearchParams(location.search).get('lang')==='fr'?'fr':'en');

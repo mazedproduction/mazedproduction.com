@@ -157,3 +157,8 @@ html body .editorial-preview .editorial-thumb img{width:100%;height:auto;object-
   .editorial-column{overflow-y:auto;scrollbar-width:thin}
   html body .editorial-project .editorial-preview{mask-image:none;-webkit-mask-image:none}
 }
+
+/* Refine the project 002 title and centre its gallery link. */
+html body .editorial-project .slide-info{padding-bottom:32px}
+html body .editorial-project .slide-info .bracket-link{align-self:center;text-align:center}
+@media(max-width:820px){html body .editorial-project .slide-info{padding-bottom:16px}}

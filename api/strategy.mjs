@@ -1,3 +1,4 @@
+import { strategyCss, strategyPresentation } from '../lib/strategy-presentation.mjs';
 import offerings from '../lib/service-content.mjs';
 import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
 
@@ -70,7 +71,7 @@ const css = `*{box-sizing:border-box}html{color-scheme:light}body{margin:0;backg
 function shell(lang, body, key='strategy') {
   const t=serviceWords(lang,key);
   const info=serviceInfo(key);
-  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>${escape(info.title)} — MAZED PRODUCTION</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>${css}</style></head><body><header><a href="/">MAZED PRODUCTION</a><nav><a href="/#services">${t.back}</a><a href="${info.path}?lang=${lang==='fr'?'en':'fr'}">${lang==='fr'?'EN':'FR'}</a></nav></header>${body}</body></html>`;
+  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>${escape(info.title)} — MAZED PRODUCTION</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>${css}${key==='strategy'?strategyCss:''}</style></head><body class="${key==='strategy'?'strategy-page':''}"><header><a href="/">MAZED PRODUCTION</a><nav><a href="/#services">${t.back}</a><a data-lang-toggle aria-label="${lang==='fr'?'Switch site to English':'Passer le site en français'}" href="${info.path}?lang=${lang==='fr'?'en':'fr'}">${lang==='fr'?'EN':'FR'}</a></nav></header>${body}</body></html>`;
 }
 function locked(lang, message='', key='strategy') {
   const t=serviceWords(lang,key);
@@ -79,6 +80,7 @@ function locked(lang, message='', key='strategy') {
 }
 function privatePage(lang, key='strategy') {
   const t=serviceWords(lang,key);
+  if(key==='strategy') return shell(lang,strategyPresentation(lang,t),key);
   const info=serviceInfo(key);
   const services=t.services.map((item,i)=>`<article class="service"><span class="mono">${String(i+1).padStart(2,'0')}</span><h2>${escape(item[0])}</h2><div><p>${escape(item[1])}</p><small>${t.deliver}</small><p class="deliver">${escape(item[2])}</p></div></article>`).join('');
   const steps=t.steps.map(item=>`<article><h3>${escape(item[0])}</h3><p>${escape(item[1])}</p></article>`).join('');

@@ -494,6 +494,15 @@ applyLanguage(new URLSearchParams(location.search).get('lang')==='fr'?'fr':'en')
 studioOriginalPosition=document.createComment('original-about-position');
 document.querySelector('.studio')?.before(studioOriginalPosition);
 function syncMobileLayout(){
+  if(mobileLayoutQuery.matches){
+    const navigation=document.querySelector('.menu-inner');
+    ['work','services','studio','contact'].forEach(id=>{
+      const link=navigation?.querySelector('a[href="#'+id+'"]');
+      const caption=navigation?.querySelector('p');
+      if(link) navigation.insertBefore(link,caption||null);
+    });
+  }
+
   const studio=document.querySelector('.studio');
   const services=document.querySelector('#services');
   if(studio && services && studioOriginalPosition){

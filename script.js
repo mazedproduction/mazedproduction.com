@@ -409,7 +409,7 @@ function applyLanguage(lang){
 
   syncResponsiveMarquee();
 
-  setHTML('.studio h2', t.studioTitle);
+  setHTML('.studio h2', lang==='fr' && mobileLayoutQuery.matches ? '<span>MAZED PRODUCTION</span><span>EST UN STUDIO DE PRODUCTION</span><span>CRÉATIVE</span>' : t.studioTitle);
   setHTML('.studio-copy', t.studioCopy);
   fitStudioTitle();
 
@@ -519,6 +519,6 @@ function syncMobileLayout(){
     if(ideas) ideas.textContent=mobileLayoutQuery.matches?'dans les idées':'dans les idées,';
   }
 }
-mobileLayoutQuery.addEventListener('change',()=>{syncMobileLayout();fitStudioTitle();});
+mobileLayoutQuery.addEventListener('change',()=>{applyLanguage(currentLang);syncMobileLayout();fitStudioTitle();});
 syncMobileLayout();
 fitStudioTitle();

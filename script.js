@@ -495,7 +495,7 @@ studioOriginalPosition=document.createComment('original-about-position');
 document.querySelector('.studio')?.before(studioOriginalPosition);
 function syncResponsiveMarquee(){
   const words=currentLang==='fr'?['NOUS PENSONS,','NOUS CRÉONS,','NOUS CONSTRUISONS']:['WE THINK,','WE CREATE,','WE BUILD'];
-  document.querySelectorAll('.marquee-track span').forEach((span,i)=>{span.textContent=words[i%words.length];});
+  document.querySelectorAll('.marquee-track span').forEach((span,i)=>{span.textContent=mobileLayoutQuery.matches?words[i%words.length].replace(/,/g,''):words[i%words.length];});
 }
 function syncMobileLayout(){
   syncResponsiveMarquee();

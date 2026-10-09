@@ -1,5 +1,6 @@
 const topbar = document.querySelector('.topbar');
 const menuBtn = document.querySelector('.menu-btn');
+const mobileMenuBtn = document.querySelector('.mobile-brand-menu');
 const menu = document.querySelector('.menu-panel');
 const menuLinks = document.querySelectorAll('.menu-panel a');
 const langToggle = document.querySelector('[data-lang-toggle]');
@@ -375,6 +376,7 @@ function applyLanguage(lang){
   });
 
   menuBtn.textContent = menu.classList.contains('open') ? t.menuClose : t.menuOpen;
+  updateMobileMenuLabel();
   setText('[data-i18n="startProject"]', t.startProject);
   setHTML('.hero-title', t.heroHTML);
   setHTML('.hero-bottom > p:first-child', t.heroLead);
@@ -437,15 +439,24 @@ window.addEventListener('scroll', () => {
   topbar.classList.toggle('scrolled', window.scrollY > 20);
 });
 
+function updateMobileMenuLabel(){
+  if(!mobileMenuBtn) return;
+  const open=menu.classList.contains('open');
+  mobileMenuBtn.setAttribute('aria-expanded',String(open));
+  mobileMenuBtn.setAttribute('aria-label',currentLang==='fr'?(open?'Fermer le menu':'Ouvrir le menu'):(open?'Close menu':'Open menu'));
+}
 function setMenu(open){
   menu.classList.toggle('open', open);
   menu.setAttribute('aria-hidden', String(!open));
   menuBtn.setAttribute('aria-expanded', String(open));
+  updateMobileMenuLabel();
   menuBtn.textContent = open ? copy[currentLang].menuClose : copy[currentLang].menuOpen;
   document.body.style.overflow = open ? 'hidden' : '';
 }
 
 menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+mobileMenuBtn?.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+document.addEventListener('keydown', event=>{if(event.key==='Escape' && menu.classList.contains('open')) setMenu(false);});
 menuLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
 if (langToggle) langToggle.addEventListener('click', () => applyLanguage(currentLang === 'en' ? 'fr' : 'en'));
 

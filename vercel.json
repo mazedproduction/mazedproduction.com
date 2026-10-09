@@ -3,7 +3,15 @@
   "rewrites": [
     {
       "source": "/strategy",
-      "destination": "/api/strategy"
+      "destination": "/api/strategy?service=strategy"
+    },
+    {
+      "source": "/content-production",
+      "destination": "/api/strategy?service=content"
+    },
+    {
+      "source": "/brand-digital",
+      "destination": "/api/strategy?service=brand"
     }
   ]
 }

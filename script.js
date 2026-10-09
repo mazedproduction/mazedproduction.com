@@ -497,30 +497,7 @@ function syncResponsiveMarquee(){
   const words=currentLang==='fr'?['NOUS PENSONS,','NOUS CRÉONS,','NOUS CONSTRUISONS']:['WE THINK,','WE CREATE,','WE BUILD'];
   document.querySelectorAll('.marquee-track span').forEach((span,i)=>{span.textContent=mobileLayoutQuery.matches?words[i%words.length].replace(/,/g,''):words[i%words.length];});
 }
-
-function syncMobileServiceSurface(){
-  let surface=document.querySelector('.mobile-services-contact');
-  if(mobileLayoutQuery.matches && !surface){
-    const services=document.querySelector('#services');
-    const contact=document.querySelector('#contact');
-    const footer=document.querySelector('body>footer');
-    if(services && contact){
-      surface=document.createElement('div');
-      surface.className='mobile-services-contact';
-      services.before(surface);
-      surface.append(services,contact);
-      if(footer) surface.append(footer);
-    }
-  }else if(!mobileLayoutQuery.matches && surface){
-    const footer=surface.querySelector('footer');
-    const main=document.querySelector('main');
-    if(footer && main) main.after(footer);
-    surface.replaceWith(...surface.children);
-  }
-}
-
 function syncMobileLayout(){
-  syncMobileServiceSurface();
   syncResponsiveMarquee();
   {
     const navigation=document.querySelector('.menu-inner');

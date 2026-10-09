@@ -407,7 +407,7 @@ function applyLanguage(lang){
       return;
     }
     row.style.display = '';
-    if (i === 0) row.href = '/strategy?lang=' + lang;
+    row.href = ['/strategy','/content-production','/brand-digital'][i] + '?lang=' + lang;
     const number = row.querySelector('span');
     const strong = row.querySelector('strong');
     const em = row.querySelector('em');

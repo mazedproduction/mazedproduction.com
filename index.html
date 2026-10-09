@@ -132,6 +132,17 @@
       html body footer{border-top:1px solid rgba(242,239,231,.12)}
     }
 
+  
+    @media(max-width:820px){
+      html body .callout{display:none!important}
+      html body .marquee-track span::after{content:none!important;display:none!important}
+      html body .marquee-track span{padding-right:32px}
+      html body .marquee-section::after{background:linear-gradient(to bottom,#050505 0%,rgba(5,5,5,.65) 14%,transparent 38%,transparent 57%,rgba(242,239,231,.65) 83%,#f2efe7 100%)!important}
+      html body .studio-grid{border-top:0!important;padding-top:12px}
+      html body .abilities{background:linear-gradient(to bottom,#f2efe7 0%,#f2efe7 calc(100% - 76px),#050505 100%)!important;padding-bottom:96px!important}
+      html body footer{border-top:0!important}
+    }
+
   </style>
 </head>
 <body>

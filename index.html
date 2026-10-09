@@ -263,7 +263,8 @@
     function syncMenuLabels(){
       const lang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
       document.querySelectorAll('.menu-inner > a').forEach((link, i) => {
-        if (menuLabelCopy[lang][i]) link.textContent = menuLabelCopy[lang][i];
+        const originalIndex=['work','services','studio','contact'].indexOf(link.getAttribute('href').slice(1));
+        if (menuLabelCopy[lang][originalIndex]) link.textContent = menuLabelCopy[lang][originalIndex];
       });
     }
     function syncContactHeadline(){

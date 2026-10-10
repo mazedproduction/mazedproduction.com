@@ -399,6 +399,19 @@
       html body .mobile-lower-surface>footer::after{display:none!important}
     }
 
+
+    /* Mobile footer: override the global dark-surface selector's specificity. */
+    @media(max-width:820px){
+      html body #top .mobile-lower-surface>footer,
+      html body #top .mobile-lower-surface>footer .footer-mid{
+        background:transparent!important;
+        background-color:transparent!important;
+        background-image:none!important;
+        border:0!important;
+        box-shadow:none!important;
+      }
+    }
+
   </style>
 </head>
 <body>

@@ -407,6 +407,7 @@ function applyLanguage(lang){
     });
   });
 
+  syncMobileWork();
   syncResponsiveMarquee();
 
   setHTML('.studio h2', lang==='fr' && mobileLayoutQuery.matches ? '<span>MAZED PRODUCTION</span><span>EST UN STUDIO DE PRODUCTION</span><span>CREATIVE</span>' : t.studioTitle);
@@ -471,6 +472,7 @@ function showSlide(next){
   index = (next + slides.length) % slides.length;
   slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
   if (current) current.textContent = String(index + 1).padStart(2, '0');
+  syncMobileWork();
 }
 
 document.querySelector('[data-prev]')?.addEventListener('click', () => showSlide(index - 1));
@@ -497,7 +499,45 @@ function syncResponsiveMarquee(){
   const words=currentLang==='fr'?['NOUS PENSONS,','NOUS CRÉONS,','NOUS CONSTRUISONS']:['WE THINK,','WE CREATE,','WE BUILD'];
   document.querySelectorAll('.marquee-track span').forEach((span,i)=>{span.textContent=mobileLayoutQuery.matches?words[i%words.length].replace(/,/g,''):words[i%words.length];});
 }
+function syncMobileWork(){
+  const controls=document.querySelector('.slider-controls');
+  const slider=document.querySelector('[data-slider]');
+  if(controls && slider && !slider.querySelector('.desktop-controls-position')){
+    const anchor=document.createElement('span');
+    anchor.className='desktop-controls-position';
+    anchor.hidden=true;
+    controls.before(anchor);
+  }
+  document.querySelectorAll('[data-slide]').forEach(slide=>{
+    const title=slide.querySelector('.slide-info h2');
+    const view=slide.querySelector('.bracket-link');
+    if(!title || !view) return;
+    const existing=title.querySelector('.mobile-project-title');
+    if(mobileLayoutQuery.matches){
+      if(!existing){
+        const link=document.createElement('a');
+        link.className='mobile-project-title';
+        link.innerHTML=title.innerHTML;
+        title.replaceChildren(link);
+      }
+      const link=title.querySelector('.mobile-project-title');
+      link.href=view.getAttribute('href');
+      link.setAttribute('aria-label',(currentLang==='fr'?'Voir le projet : ':'View project: ')+link.textContent.replace(/\s+/g,' ').trim());
+    }else if(existing){
+      title.innerHTML=existing.innerHTML;
+    }
+  });
+  if(controls && slider){
+    if(mobileLayoutQuery.matches){
+      const active=slider.querySelector('.slide.active .slide-info');
+      if(active) active.append(controls);
+    }else{
+      slider.querySelector('.desktop-controls-position')?.after(controls);
+    }
+  }
+}
 function syncMobileLayout(){
+  syncMobileWork();
   syncResponsiveMarquee();
   {
     const navigation=document.querySelector('.menu-inner');

@@ -549,6 +549,20 @@ function syncMobileLayout(){
     });
   }
 
+  const contact=document.querySelector('#contact');
+  const mobileServices=document.querySelector('#services');
+  let surface=document.querySelector('.mobile-lower-surface');
+  if(mobileLayoutQuery.matches && mobileServices && contact){
+    if(!surface){
+      surface=document.createElement('div');
+      surface.className='mobile-lower-surface';
+      mobileServices.before(surface);
+      surface.append(mobileServices,contact);
+    }
+  }else if(surface){
+    surface.replaceWith(...surface.childNodes);
+  }
+
   const studio=document.querySelector('.studio');
   const services=document.querySelector('#services');
   if(studio && services && studioOriginalPosition){

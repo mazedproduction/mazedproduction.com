@@ -71,7 +71,55 @@ const css = `*{box-sizing:border-box}html{color-scheme:light}body{margin:0;backg
 function shell(lang, body, key='strategy') {
   const t=serviceWords(lang,key);
   const info=serviceInfo(key);
-  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>${escape(info.title)} — MAZED PRODUCTION</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>${css}${key==='strategy'?strategyCss:''}</style></head><body class="${key==='strategy'?'strategy-page':''}"><header><a href="/">MAZED PRODUCTION</a><nav><a href="/#services">${t.back}</a><a data-lang-toggle aria-label="${lang==='fr'?'Switch site to English':'Passer le site en français'}" href="${info.path}?lang=${lang==='fr'?'en':'fr'}">${lang==='fr'?'EN':'FR'}</a></nav></header>${body}</body></html>`;
+  return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>${escape(info.title)} — MAZED PRODUCTION</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>${css}${key==='strategy'?strategyCss:''}
+/* MAZED silver-grain film: one monochrome texture, no section-shaped black panels. */
+:root{--mazed-film:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221600%22%20height%3D%22900%22%20viewBox%3D%220%200%201600%20900%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cfilter%20id%3D%22grain%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.72%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%3Cfilter%20id%3D%22wear%22%20x%3D%22-100%25%22%20width%3D%22300%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.018%20.09%22%20numOctaves%3D%223%22%20seed%3D%2213%22%20result%3D%22n%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22n%22%20scale%3D%2232%22%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%222%22%2F%3E%3C%2Ffilter%3E%3ClinearGradient%20id%3D%22rim%22%3E%3Cstop%20stop-color%3D%22%23b6b3ab%22%20stop-opacity%3D%22.24%22%2F%3E%3Cstop%20offset%3D%22.025%22%20stop-color%3D%22%237c7b77%22%20stop-opacity%3D%22.12%22%2F%3E%3Cstop%20offset%3D%22.12%22%20stop-color%3D%22%23090909%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%22.86%22%20stop-color%3D%22%23090909%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%22.98%22%20stop-color%3D%22%2377756f%22%20stop-opacity%3D%22.1%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b1aea7%22%20stop-opacity%3D%22.2%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22edge%22%3E%3Cstop%20stop-color%3D%22white%22%20stop-opacity%3D%22.8%22%2F%3E%3Cstop%20offset%3D%22.12%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%22.88%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22white%22%20stop-opacity%3D%22.7%22%2F%3E%3C%2FlinearGradient%3E%3Cmask%20id%3D%22edgeMask%22%3E%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22url(%23edge)%22%2F%3E%3C%2Fmask%3E%3C%2Fdefs%3E%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22%23090909%22%2F%3E%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22url(%23rim)%22%2F%3E%3Crect%20width%3D%221600%22%20height%3D%22900%22%20filter%3D%22url(%23grain)%22%20opacity%3D%22.048%22%2F%3E%3Crect%20width%3D%221600%22%20height%3D%22900%22%20filter%3D%22url(%23grain)%22%20mask%3D%22url(%23edgeMask)%22%20opacity%3D%22.19%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23c6c2b7%22%20filter%3D%22url(%23wear)%22%3E%3Cpath%20d%3D%22M-7%200L5%20160%20-4%20290%203%20430%20-5%20610%207%20740%20-4%20900%22%20stroke-width%3D%2212%22%20opacity%3D%22.22%22%2F%3E%3Cpath%20d%3D%22M1604%200L1596%20220%201606%20390%201598%20580%201605%20730%201598%20900%22%20stroke-width%3D%2210%22%20opacity%3D%22.2%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23bab7ae%22%20opacity%3D%22.1%22%3E%3Cpath%20d%3D%22M18%2074l1%2027m-8%20245%202%2034m18%20217-2%2012m1547-480%201%2016m12%20284-1%2035m-19%20312%202%209%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")}
+html:root body.film-home,
+html:root body.film-gallery{
+  background:#090909 var(--mazed-film) center top / 100vw 100svh no-repeat fixed!important;
+}
+html:root body.film-home :is(.hero,.featured,.contact,footer),
+html:root body.film-home #top .mobile-lower-surface,
+html:root body.film-home #top .mobile-lower-surface>footer,
+html:root body.film-home #top .mobile-lower-surface>footer .footer-mid{
+  background:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+html:root body.film-home :is(.topbar,.topbar.scrolled,.menu-panel){
+  background:#090909 var(--mazed-film) center top / 100vw 100svh no-repeat fixed!important;
+}
+html:root body.film-home::before,
+html:root body.film-home .mobile-lower-surface::before,
+html:root body.film-home .contact::before,
+html:root body.film-home .contact::after,
+html:root body.film-home .hero-atmosphere,
+html:root body.film-home .oil-atmosphere,
+html:root body.film-home>.grain{display:none!important}
+html:root body.film-gallery>header,
+html:root body.film-gallery .image-viewer,
+html:root body.film-client :is(.strategy-hero,.strategy-examples,.strategy-cta,footer),
+html:root body.film-client.strategy-page>header{
+  background:#090909 var(--mazed-film) center top / 100vw 100svh no-repeat fixed!important;
+}
+html:root body.film-home .hero-title{text-shadow:none!important}
+@media(max-width:820px){
+  html:root body.film-home #top .mobile-lower-surface>.abilities,
+  html:root body.film-home #top .mobile-lower-surface>.contact{
+    background:transparent!important;
+    background-image:none!important;
+  }
+}
+@supports(-webkit-touch-callout:none){
+  html:root body.film-home,
+  html:root body.film-gallery{background-image:none!important;isolation:isolate}
+  html:root body.film-home::after,
+  html:root body.film-gallery::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:#090909 var(--mazed-film) center / 100% 100% no-repeat;
+  }
+}
+</style></head><body class="film-client ${key==='strategy'?'strategy-page':''}"><header><a href="/">MAZED PRODUCTION</a><nav><a href="/#services">${t.back}</a><a data-lang-toggle aria-label="${lang==='fr'?'Switch site to English':'Passer le site en français'}" href="${info.path}?lang=${lang==='fr'?'en':'fr'}">${lang==='fr'?'EN':'FR'}</a></nav></header>${body}</body></html>`;
 }
 function locked(lang, message='', key='strategy') {
   const t=serviceWords(lang,key);
@@ -87,7 +135,7 @@ function privatePage(lang, key='strategy') {
   return shell(lang, `<main class="wrap"><span class="mono kicker">${t.client} / ${info.number}</span><h1>${escape(info.title)}</h1><p class="intro">${t.intro}</p><p class="lead">${t.lead}</p><section class="services" aria-label="${escape(info.title)}">${services}</section><section class="method"><h2>${t.method}</h2><div class="steps">${steps}</div><p class="note">${t.note}</p></section></main><section class="cta"><div><h2>${t.cta}</h2><a href="mailto:contact@mazedproduction.com">${t.discuss}</a></div></section><footer><span class="mono">©2023 MAZEDPRODUCTION. ALL RIGHTS RESERVED</span><form method="post" action="${info.path}?lang=${lang}"><input type="hidden" name="action" value="logout"><button class="signout">${t.logout}</button></form></footer>`, key);
 }
 function reply(body, status=200, extra={}) {
-  return new Response(body,{status,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'private, no-store, max-age=0','Vercel-CDN-Cache-Control':'no-store','X-Robots-Tag':'noindex, nofollow, noarchive','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','Content-Security-Policy':"default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",...extra}});
+  return new Response(body,{status,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'private, no-store, max-age=0','Vercel-CDN-Cache-Control':'no-store','X-Robots-Tag':'noindex, nofollow, noarchive','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','Content-Security-Policy':"default-src 'none'; img-src data:; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",...extra}});
 }
 export default {
   async fetch(request) {
